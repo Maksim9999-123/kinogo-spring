@@ -16,6 +16,6 @@ public class Genre {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
-    @ManyToOne
-    private Movie movie;
+//    @ManyToOne
+//    private Movie movie;
 }

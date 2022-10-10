@@ -16,6 +16,7 @@ public class CastCrew {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    private String name;
     private String career;
     private double height;
     private Date dateBirth;
@@ -26,10 +27,8 @@ public class CastCrew {
     private int totalFilms;
     private Date firstFilm;
     private Date latestFilm;
-    @ManyToOne
-    private Actor actor;
-    @ManyToOne
-    private Producer producer;
+    @Enumerated(value = EnumType.STRING)
+    private CastCrewRole castCrewRole;
     @ManyToOne
     private Movie movie;
 }

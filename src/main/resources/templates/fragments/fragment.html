@@ -28,7 +28,7 @@
                             <a href="#page-top"></a>
                         </li>
                         <li class="dropdown first">
-                            <a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown">
+                            <a href="/moviegrid" class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown">
                                 Home
                             </a>
                         <li class="dropdown first">
@@ -47,7 +47,7 @@
                             </a>
                         </li>
                         <li class="dropdown first">
-                            <a href="" class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown" data-hover="dropdown">
+                            <a href="/movielist" class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown" data-hover="dropdown">
                                 Category list
                             </a>
                         </li>
@@ -89,6 +89,9 @@
                     <option value="saab">Others</option>
                 </select>
                 <input type="text" placeholder="Search for a movie, TV Show or celebrity that you are looking for">
+            </div>
+            <div class="genres">
+                <a href="/genres" th:each="genre: ${genres}" th:text="${genre.name}"></a>
             </div>
         </div>
     </header>
@@ -139,6 +142,12 @@
                     </form>
                     <a href="#" class="btn">Subscribe now <i class="ion-ios-arrow-forward"></i></a>
                 </div>
+                <p>Follow us: </p>
+                <a href="#"><i class="ion-social-facebook"></i></a>
+                <a href="#"><i class="ion-social-twitter"></i></a>
+                <a href="#"><i class="ion-social-googleplus"></i></a>
+                <a href="#"><i class="ion-social-youtube"></i></a>
+            </div>
             </div>
         </div>
         <div class="ft-copyright">

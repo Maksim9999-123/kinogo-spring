@@ -6,7 +6,7 @@
 <html class="ie ie8 no-js" lang="en-US">
 <![endif]-->
 <!--[if !(IE 7) | !(IE 8)  ]><!-->
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" xmlns:th="https://www.thymeleaf.org">
 
 <!-- moviegrid07:29-->
 <head>
@@ -52,6 +52,12 @@
 
 <div class="hero common-hero">
     <div class="container">
+<!--        <div class="genreList" style="background-color: red">-->
+<!--            <div th:each="movie: ${movies}">-->
+<!--                <h1 th:text="${movie.vieweing}"></h1>-->
+<!--                <h1 th:text="${movie.name}" style="font-size: 2em"></h1>-->
+<!--            </div>-->
+<!--        </div>-->
         <div class="row">
             <div class="col-md-12">
                 <div class="hero-ct">
@@ -83,15 +89,15 @@
                     <a href="movielist.html" class="list"><i class="ion-ios-list-outline "></i></a>
                     <a href="moviegrid.html" class="grid"><i class="ion-grid active"></i></a>
                 </div>
-                <div class="flex-wrap-movielist">
+                <div class="flex-wrap-movielist" th:each="movie: ${movies}">
                     <div class="movie-item-style-2 movie-item-style-1">
+                        <h3 th:text="${movie.name}"></h3>
                         <img src="images/uploads/mv1.jpg" alt="">
                         <div class="hvr-inner">
-                            <a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+                            <a href="/moviesingle"> Watch film <i class="ion-android-arrow-dropright"></i> </a>
                         </div>
                         <div class="mv-item-infor">
-                            <h6><a href="#">oblivion</a></h6>
-                            <p class="rate"><i class="ion-android-star"></i><span>8.1</span> /10</p>
+                            <p class="rate"><i class="ion-android-star"></i><span th:text="${movie.totalMovierate}"></span></p>
                         </div>
                     </div>
                 </div>

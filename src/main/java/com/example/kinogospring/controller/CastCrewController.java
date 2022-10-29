@@ -1,7 +1,6 @@
 package com.example.kinogospring.controller;
 
 import com.example.kinogospring.entity.CastCrew;
-import com.example.kinogospring.entity.Genre;
 import com.example.kinogospring.repository.CastCrewRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;

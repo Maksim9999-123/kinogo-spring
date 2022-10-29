@@ -13,7 +13,8 @@ import javax.persistence.*;
 @Table(name = "rated")
 public class Rated {
     @Id
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
     @ManyToOne
     private User user;

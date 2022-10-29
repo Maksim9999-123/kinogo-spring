@@ -16,7 +16,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
-    private String surnama;
+    private String surname;
     private String email;
     @Enumerated(value = EnumType.STRING)
     private Coutry coutry;
@@ -24,4 +24,6 @@ public class User {
     private String password;
     @Enumerated(value = EnumType.STRING)
     private Role role;
+    private boolean isEnabled;
+    private String verifyToken;
 }

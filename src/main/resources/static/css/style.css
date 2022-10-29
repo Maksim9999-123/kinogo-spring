@@ -102,6 +102,17 @@
   }
 }
 
+.movie-item-style-2>h3{
+  color: white;
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.genresMoviesList{
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .genres{
   margin-top: 30px;
   margin-bottom: 30px;
@@ -4428,7 +4439,9 @@ ul {
     width: 170px;
   }
 }
+
 .flex-wrap-movielist {
+  padding-left: 20px;
   display: -webkit-flex;
   display: -moz-box;
   display: -ms-flexbox;

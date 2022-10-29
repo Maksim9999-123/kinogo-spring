@@ -70,7 +70,7 @@
         <div class="row ipad-width2">
             <div class="col-md-8 col-sm-12 col-xs-12">
                 <div class="topbar-filter">
-                    <p>Found <span>1,608 movies</span> in total</p>
+                    <p>Found <span th:text="${countMovie}"></span> in total film</p>
                     <label>Sort by:</label>
                     <select>
                         <option value="popularity">Popularity Descending</option>
@@ -83,16 +83,15 @@
                     <a href="movielist.html" class="list"><i class="ion-ios-list-outline active"></i></a>
                     <a href="moviegrid.html" class="grid"><i class="ion-grid"></i></a>
                 </div>
-                <div class="movie-item-style-2">
-                    <img src="images/uploads/mv1.jpg" alt="">
+                <div class="movie-item-style-2" th:each="movies: ${allMovie}">
+                    <img th:src="@{/movie/getImage(fileImage=${movies.filmPic})}" alt="">
                     <div class="mv-item-infor">
-                        <h6><a href="moviesingle.html">oblivion <span>(2012)</span></a></h6>
+                        <h6><a th:href="@{/moviesingle/{id}(id=${movies.id})}" th:text="${movies.name}"> <span>(2012)</span></a></h6>
                         <p class="rate"><i class="ion-android-star"></i><span>8.1</span> /10</p>
-                        <p class="describe">Earth's mightiest heroes must come together and learn to fight as a team if
-                            they are to stop the mischievous Loki and his alien army from enslaving humanity...</p>
+                        <p class="describe" th:text="${movies.description}"></p>
                         <p class="run-time"> Run Time: 2h21’ . <span>MMPA: PG-13 </span> .
                             <span>Release: 1 May 2015</span></p>
-                        <p>Director: <a href="#">Joss Whedon</a></p>
+                        <p>Director: <a href="#"></a></p>
                         <p>Stars: <a href="#">Robert Downey Jr.,</a> <a href="#">Chris Evans,</a> <a href="#"> Chris
                             Hemsworth</a></p>
                     </div>
@@ -187,10 +186,10 @@
 <th:block th:insert="/fragments/fragment::footer"></th:block>
 <!-- end of footer section-->
 
-<script src="js/jquery.js"></script>
-<script src="js/plugins.js"></script>
-<script src="js/plugins2.js"></script>
-<script src="js/custom.js"></script>
+<script src="/js/jquery.js"></script>
+<script src="/js/plugins.js"></script>
+<script src="/js/plugins2.js"></script>
+<script src="/js/custom.js"></script>
 </body>
 
 <!-- movielist07:38-->

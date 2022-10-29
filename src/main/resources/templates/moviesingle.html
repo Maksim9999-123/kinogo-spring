@@ -18,25 +18,25 @@
 	<meta name="author" content="">
 	<link rel="profile" href="#">
 
-    <!--Google Font-->
-    <link rel="stylesheet" href='http://fonts.googleapis.com/css?family=Dosis:400,700,500|Nunito:300,400,600' />
+	<!--Google Font-->
+	<link rel="stylesheet" href='http://fonts.googleapis.com/css?family=Dosis:400,700,500|Nunito:300,400,600' />
 	<!-- Mobile specific meta -->
 	<meta name=viewport content="width=device-width, initial-scale=1">
 	<meta name="format-detection" content="telephone-no">
 
 	<!-- CSS files -->
-	<link rel="stylesheet" href="css/plugins.css">
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="/css/plugins.css">
+	<link rel="stylesheet" href="/css/style.css">
 
 </head>
 <body>
 <!--preloading-->
 <div id="preloader">
-    <img class="logo" src="images/logo1.png" alt="" width="119" height="58">
-    <div id="status">
-        <span></span>
-        <span></span>
-    </div>
+	<img class="logo" src="images/logo1.png" alt="" width="119" height="58">
+	<div id="status">
+		<span></span>
+		<span></span>
+	</div>
 </div>
 <!--end of preloading-->
 <!--login form popup-->
@@ -68,7 +68,7 @@
 		<div class="row ipad-width2">
 			<div class="col-md-4 col-sm-12 col-xs-12">
 				<div class="movie-img sticky-sb">
-					<img src="images/uploads/movie-single.jpg" alt="">
+					<img th:src="@{/movie/getImage(fileImage=${movie.filmPic})}" alt="">
 				</div>
 			</div>
 			<div class="col-md-8 col-sm-12 col-xs-12">
@@ -113,30 +113,31 @@
 								<li><a href="#reviews">Film</a></li>
 								<li><a href="#cast">Cast & Crew </a></li>
 							</ul>
-						    <div class="tab-content">
-						        <div id="overview" class="tab active">
-						            <div class="row">
-						            	<div class="col-md-8 col-sm-12 col-xs-12">
-						            		<p th:text="${movie.description}"></p>
-						            	</div>
-						            </div>
-						        </div>
-						        <div id="reviews" class="tab review">
+							<div class="tab-content">
+								<div id="overview" class="tab active">
+									<div class="row">
+										<div class="col-md-8 col-sm-12 col-xs-12">
+											<p th:text="${movie.description}"></p>
+										</div>
+									</div>
+								</div>
+								<div id="reviews" class="tab review">
 									<h1>FILM LINK</h1>
-						        </div>
-						        <div id="cast" class="tab">
-						        	<div class="row">
-						            	<h3>Cast & Crew of</h3>
-					       	 			<h2 th:text="${movie.name}"></h2>
-										<!-- //== -->
-					       	 			<div class="title-hd-sm">
+									<video controls>
+										<source th:src="@{/movie/getVideo(fileVideo=${movie.filmVideo})}" type="video/mp4">
+									</video>
+								</div>
+								<div id="cast" class="tab">
+									<div class="row">
+										<h3>Cast & Crew of</h3>
+										<h2 th:text="${movie.name}"></h2>
+										<div class="title-hd-sm">
 											<h4>Producer's</h4>
 										</div>
 										<div class="mvcast-item">
 											<div class="cast-it">
-												<div class="cast-left" th:each="castCrew: ${castAndCrew}" >
-													<h4>JW</h4>
-													<a href="#" th:if="${castCrew.castCrewRole} == 'ACTOR'" th:text="${castCrew.name}"></a>
+												<div class="cast-left" th:each="castCrew: ${castAndCrew}">
+													<a href="#" th:if="${castCrew.castCrewRole.name() == 'PRODUCER'}" th:text="${castCrew.name}"></a>
 												</div>
 											</div>
 										</div>
@@ -146,24 +147,22 @@
 										</div>
 										<div class="mvcast-item">
 											<div class="cast-it">
-												<div class="cast-left">
-													<h4>SL</h4>
-													<a href="#">Stan Lee</a>
+												<div class="cast-left" th:each="castCrew: ${castAndCrew}">
+													<a href="#" th:if="${castCrew.castCrewRole.name() == 'ACTOR'}" th:text="${castCrew.name}"></a>
 												</div>
-												<p>...  (based on Marvel comics)</p>
 											</div>
 										</div>
-						            </div>
-					       	 	</div>
-					       	 	<div id="media" class="tab">
-						        	<div class="row">
-						        		<div class="rv-hd">
-						            		<div>
-						            			<h3>Videos & Photos of</h3>
-					       	 					<h2>Skyfall: Quantum of Spectre</h2>
-						            		</div>
-						            	</div>
-						            	<div class="title-hd-sm">
+									</div>
+								</div>
+								<div id="media" class="tab">
+									<div class="row">
+										<div class="rv-hd">
+											<div>
+												<h3>Videos & Photos of</h3>
+												<h2>Skyfall: Quantum of Spectre</h2>
+											</div>
+										</div>
+										<div class="title-hd-sm">
 											<h4>Videos <span>(8)</span></h4>
 										</div>
 										<div class="mvsingle-item media-item">
@@ -274,13 +273,13 @@
 											<a class="img-lightbox"  data-fancybox-group="gallery" href="images/uploads/image201.jpg" ><img src="images/uploads/image20.jpg" alt=""></a>
 											<a class="img-lightbox"  data-fancybox-group="gallery" href="images/uploads/image211.jpg" ><img src="images/uploads/image2-1.jpg" alt=""></a>
 										</div>
-						        	</div>
-					       	 	</div>
-					       	 	<div id="moviesrelated" class="tab">
-					       	 		<div class="row">
-					       	 			<h3>Related Movies To</h3>
-					       	 			<h2>Skyfall: Quantum of Spectre</h2>
-					       	 			<div class="topbar-filter">
+									</div>
+								</div>
+								<div id="moviesrelated" class="tab">
+									<div class="row">
+										<h3>Related Movies To</h3>
+										<h2>Skyfall: Quantum of Spectre</h2>
+										<div class="topbar-filter">
 											<p>Found <span>12 movies</span> in total</p>
 											<label>Sort by:</label>
 											<select>
@@ -292,49 +291,48 @@
 												<option value="date">Release date Ascending</option>
 											</select>
 										</div>
+									</div>
+									<div class="movie-item-style-2">
+										<img src="images/uploads/mv4.jpg" alt="">
+										<div class="mv-item-infor">
+											<h6><a href="#">Mulholland pride<span> (2013)  </span></a></h6>
+											<p class="rate"><i class="ion-android-star"></i><span>7.2</span> /10</p>
+											<p class="describe">When Tony Stark's world is torn apart by a formidable
+												terrorist called the Mandarin, he starts an odyssey of rebuilding and
+												retribution.</p>
+											<p class="run-time"> Run Time: 2h21’ . <span>MMPA: PG-13 </span> . <span>Release: 1 May 2015</span>
+											</p>
+											<p>Director: <a href="#">Shane Black</a></p>
+											<p>Stars: <a href="#">Robert Downey Jr., </a> <a href="#"> Guy Pearce,</a><a
+													href="#">Don Cheadle</a></p>
 										</div>
-                                    <div class="movie-item-style-2">
-                                        <img src="images/uploads/mv4.jpg" alt="">
-                                        <div class="mv-item-infor">
-                                            <h6><a href="#">Mulholland pride<span> (2013)  </span></a></h6>
-                                            <p class="rate"><i class="ion-android-star"></i><span>7.2</span> /10</p>
-                                            <p class="describe">When Tony Stark's world is torn apart by a formidable
-                                                terrorist called the Mandarin, he starts an odyssey of rebuilding and
-                                                retribution.</p>
-                                            <p class="run-time"> Run Time: 2h21’ . <span>MMPA: PG-13 </span> . <span>Release: 1 May 2015</span>
-                                            </p>
-                                            <p>Director: <a href="#">Shane Black</a></p>
-                                            <p>Stars: <a href="#">Robert Downey Jr., </a> <a href="#"> Guy Pearce,</a><a
-                                                    href="#">Don Cheadle</a></p>
-                                        </div>
+									</div>
+									<div class="movie-item-style-2">
+										<img src="images/uploads/mv5.jpg" alt="">
+										<div class="mv-item-infor">
+											<h6><a href="#">skyfall: evil of boss<span> (2013)  </span></a></h6>
+											<p class="rate"><i class="ion-android-star"></i><span>7.0</span> /10</p>
+											<p class="describe">When Tony Stark's world is torn apart by a formidable terrorist called the Mandarin, he starts an odyssey of rebuilding and retribution.</p>
+											<p class="run-time"> Run Time: 2h21’    .     <span>MMPA: PG-13 </span>    .     <span>Release: 1 May 2015</span></p>
+											<p>Director: <a href="#">Alan Taylor</a></p>
+											<p>Stars: <a href="#">Chris Hemsworth,  </a> <a href="#">  Natalie Portman,</a><a href="#">Tom Hiddleston</a></p>
 										</div>
-										<div class="movie-item-style-2">
-											<img src="images/uploads/mv5.jpg" alt="">
-											<div class="mv-item-infor">
-												<h6><a href="#">skyfall: evil of boss<span> (2013)  </span></a></h6>
-												<p class="rate"><i class="ion-android-star"></i><span>7.0</span> /10</p>
-												<p class="describe">When Tony Stark's world is torn apart by a formidable terrorist called the Mandarin, he starts an odyssey of rebuilding and retribution.</p>
-												<p class="run-time"> Run Time: 2h21’    .     <span>MMPA: PG-13 </span>    .     <span>Release: 1 May 2015</span></p>
-												<p>Director: <a href="#">Alan Taylor</a></p>
-												<p>Stars: <a href="#">Chris Hemsworth,  </a> <a href="#">  Natalie Portman,</a><a href="#">Tom Hiddleston</a></p>
-											</div>
+									</div>
+									<div class="topbar-filter">
+										<label>Movies per page:</label>
+										<select>
+											<option value="range">5 Movies</option>
+											<option value="saab">10 Movies</option>
+										</select>
+										<div class="pagination2">
+											<span>Page 1 of 2:</span>
+											<a class="active" href="#">1</a>
+											<a href="#">2</a>
+											<a href="#"><i class="ion-arrow-right-b"></i></a>
 										</div>
-										<div class="topbar-filter">
-											<label>Movies per page:</label>
-											<select>
-												<option value="range">5 Movies</option>
-												<option value="saab">10 Movies</option>
-											</select>
-											<div class="pagination2">
-												<span>Page 1 of 2:</span>
-												<a class="active" href="#">1</a>
-												<a href="#">2</a>
-												<a href="#"><i class="ion-arrow-right-b"></i></a>
-											</div>
-										</div>
-					       	 		</div>
-					       	 	</div>
-						    </div>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -342,14 +340,15 @@
 		</div>
 	</div>
 </div>
+</div>
 <!-- footer section-->
 <th:block th:insert="/fragments/fragment::footer"></th:block>
 <!-- end of footer section-->
 
-<script src="js/jquery.js"></script>
-<script src="js/plugins.js"></script>
-<script src="js/plugins2.js"></script>
-<script src="js/custom.js"></script>
+<script src="/js/jquery.js"></script>
+<script src="/js/plugins.js"></script>
+<script src="/js/plugins2.js"></script>
+<script src="/js/custom.js"></script>
 </body>
 
 <!-- moviesingle11:03-->

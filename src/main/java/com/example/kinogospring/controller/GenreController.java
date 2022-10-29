@@ -9,9 +9,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
@@ -21,9 +23,11 @@ public class GenreController {
 
     private final MovieRepository movieRepository;
 
-    @GetMapping("/genres")
-    public String openGenre(ModelMap modelMap){
-        List<Movie> allMovie = movieRepository.findAll();
+    @GetMapping("/genre/{id}")
+    public String openGenre(@PathVariable("id") int id, ModelMap modelMap){
+        List<Movie> allMovie = movieRepository.findAllById(id);
+
+//        List<Movie> allMovie = movieRepository.findById(id);
         modelMap.addAttribute("movies", allMovie);
         return "moviegrid";
     }

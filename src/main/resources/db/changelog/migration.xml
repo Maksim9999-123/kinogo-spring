@@ -1,0 +1,203 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+   http://www.liquibase.org/xml/ns/dbchangelog
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet author="maslanyan" id="initdb">
+        <createTable tableName="user">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true"/>
+
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="surname" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="country" type="ENUM(
+
+            'USA',
+            'CANADA',
+            'MEXICO',
+            'RUSSIA',
+            'CHINA',
+            'JAPAN',
+            'SPAIN',
+            'FRANCE')">
+                <constraints nullable="false"/>
+            </column>
+            <column name="age" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="role" type="ENUM('USER','ADMIN')" defaultValue="USER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_enabled" type="INT(1)" defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+
+        <createTable tableName="cast_crew">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="career" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="height" type="double">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date_birth" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="age" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="zodiac" type="ENUM(
+            'RAM',
+            'BULL',
+            'TWINS',
+            'CRAB',
+            'LION',
+            'VIRGIN',
+            'BALANCE',
+            'SCORPION',
+            'ARCHER',
+            'GOAT',
+            'WATER_BEARER',
+            'FISH')">
+                <constraints nullable="false"/>
+            </column>
+            <column name="genre" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="total_film" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="first_film" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="latest_film" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cast_crew_role" type="ENUM('ACTOR','PRODUCER')">
+                <constraints nullable="false"/>
+            </column>
+            <column name="movie_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="favorite_movie">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="user_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="movie_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="genre">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="movie_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="movie">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="total_movierate" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="movie_country" type="ENUM(
+            'USA',
+            'CANADA',
+            'MEXICO',
+            'RUSSIA',
+            'CHINA',
+            'JAPAN',
+            'SPAIN',
+            'FRANCE',
+            'ITALY',
+            'GERMANY')">
+                <constraints nullable="false"/>
+            </column>
+            <column name="year_of_idssue" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="primere" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="film_pic" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="vieweing" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="rated">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="user_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="movie_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="rate" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+<changeSet id="addconstrains" author="maslanyan">
+    <addForeignKeyConstraint baseTableName="rated" baseColumnNames="user_id" constraintName="fk_user_rated_id1" referencedTableName="user"
+                              referencedColumnNames="id"/>
+    <addForeignKeyConstraint baseTableName="rated" baseColumnNames="movie_id" constraintName="fk_movie_rated_id1" referencedTableName="movie"
+                             referencedColumnNames="id"/>
+    <addForeignKeyConstraint baseTableName="genre" baseColumnNames="movie_id" constraintName="fk_genre_id" referencedTableName="movie"
+                             referencedColumnNames="id"/>
+    <addForeignKeyConstraint baseTableName="favorite_movie" baseColumnNames="user_id" constraintName="fk_user_id_favorite1"
+                             referencedTableName="user"
+                             referencedColumnNames="id"/>
+    <addForeignKeyConstraint baseTableName="favorite_movie" baseColumnNames="movie_id" constraintName="fk_movie_id_favorite2"
+                             referencedTableName="movie"
+                             referencedColumnNames="id"/>
+    <addForeignKeyConstraint baseTableName="cast_crew" baseColumnNames="movie_id" constraintName="fk_cast_crew_id"
+                             referencedTableName="movie"
+                             referencedColumnNames="id"/>
+</changeSet>
+</databaseChangeLog>

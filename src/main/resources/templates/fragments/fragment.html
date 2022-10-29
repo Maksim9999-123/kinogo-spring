@@ -28,7 +28,7 @@
                             <a href="#page-top"></a>
                         </li>
                         <li class="dropdown first">
-                            <a href="/moviegrid" class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown">
+                            <a href="/" class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown">
                                 Home
                             </a>
                         <li class="dropdown first">
@@ -91,7 +91,7 @@
                 <input type="text" placeholder="Search for a movie, TV Show or celebrity that you are looking for">
             </div>
             <div class="genres">
-                <a href="/genres" th:each="genre: ${genres}" th:text="${genre.name}"></a>
+                <a th:href="@{/genre/{id}(id=${genre.getId})}" th:each="genre: ${genres}" th:text="${genre.name}"></a>
             </div>
         </div>
     </header>
@@ -102,8 +102,8 @@
             <div class="flex-parent-ft">
                 <div class="flex-child-ft item1">
                     <a href="index-2.html"><img class="logo" src="images/logo1.png" alt=""></a>
-                    <p>5th Avenue st, manhattan<br>
-                        New York, NY 10001</p>
+                    <p>ITSpace, Gyumri<br>
+                        Armenia</p>
                     <p>Call us: <a href="#">(+01) 202 342 6789</a></p>
                 </div>
                 <div class="flex-child-ft item2">
@@ -148,7 +148,7 @@
                 <a href="#"><i class="ion-social-googleplus"></i></a>
                 <a href="#"><i class="ion-social-youtube"></i></a>
             </div>
-            </div>
+        </div>
         </div>
         <div class="ft-copyright">
             <div class="ft-left">

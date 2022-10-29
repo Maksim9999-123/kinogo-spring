@@ -25,8 +25,8 @@
     <meta name="format-detection" content="telephone-no">
 
     <!-- CSS files -->
-    <link rel="stylesheet" href="css/plugins.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/plugins.css">
+    <link rel="stylesheet" href="/css/style.css">
 
 </head>
 <body>
@@ -52,12 +52,12 @@
 
 <div class="hero common-hero">
     <div class="container">
-<!--        <div class="genreList" style="background-color: red">-->
-<!--            <div th:each="movie: ${movies}">-->
-<!--                <h1 th:text="${movie.vieweing}"></h1>-->
-<!--                <h1 th:text="${movie.name}" style="font-size: 2em"></h1>-->
-<!--            </div>-->
-<!--        </div>-->
+        <!--        <div class="genreList" style="background-color: red">-->
+        <!--            <div th:each="movie: ${movies}">-->
+        <!--                <h1 th:text="${movie.vieweing}"></h1>-->
+        <!--                <h1 th:text="${movie.name}" style="font-size: 2em"></h1>-->
+        <!--            </div>-->
+        <!--        </div>-->
         <div class="row">
             <div class="col-md-12">
                 <div class="hero-ct">
@@ -89,15 +89,17 @@
                     <a href="movielist.html" class="list"><i class="ion-ios-list-outline "></i></a>
                     <a href="moviegrid.html" class="grid"><i class="ion-grid active"></i></a>
                 </div>
-                <div class="flex-wrap-movielist" th:each="movie: ${movies}">
-                    <div class="movie-item-style-2 movie-item-style-1">
-                        <h3 th:text="${movie.name}"></h3>
-                        <img src="images/uploads/mv1.jpg" alt="">
-                        <div class="hvr-inner">
-                            <a href="/moviesingle"> Watch film <i class="ion-android-arrow-dropright"></i> </a>
-                        </div>
-                        <div class="mv-item-infor">
-                            <p class="rate"><i class="ion-android-star"></i><span th:text="${movie.totalMovierate}"></span></p>
+                <div class="genresMoviesList">
+                    <div class="flex-wrap-movielist" th:each="movie: ${movies}">
+                        <div class="movie-item-style-2 movie-item-style-1">
+                            <h3 th:text="${movie.name}"></h3>
+                            <img th:src="@{/movie/getImage(fileImage=${movie.filmPic})}" alt="">
+                            <div class="hvr-inner">
+                                <a th:href="@{/moviesingle/{id}(id=${movie.id})}"> Watch film <i class="ion-android-arrow-dropright"></i> </a>
+                            </div>
+                            <div class="mv-item-infor">
+                                <p class="rate"><i class="ion-android-star"></i><span th:text="${movie.totalMovierate}"></span></p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -105,7 +107,7 @@
                     <label>Movies per page:</label>
                     <select>
                         <option value="range">20 Movies</option>
-                        <option value="saab">10 Movies</option>
+                        <option value="saab">10 Movies</option>0
                     </select>
 
                     <div class="pagination2">
@@ -188,10 +190,10 @@
 <th:block th:insert="/fragments/fragment::footer"></th:block>
 <!-- end of footer section-->
 
-<script src="js/jquery.js"></script>
-<script src="js/plugins.js"></script>
-<script src="js/plugins2.js"></script>
-<script src="js/custom.js"></script>
+<script src="/js/jquery.js"></script>
+<script src="/js/plugins.js"></script>
+<script src="/js/plugins2.js"></script>
+<script src="/js/custom.js"></script>
 </body>
 
 <!-- moviegrid07:38-->

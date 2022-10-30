@@ -56,6 +56,9 @@
             <column name="name" type="varchar(255)">
                 <constraints nullable="false"/>
             </column>
+            <column name="film_pic" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
             <column name="career" type="varchar(255)">
                 <constraints nullable="false"/>
             </column>
@@ -160,6 +163,9 @@
                 <constraints nullable="false"/>
             </column>
             <column name="film_pic" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="film_video" type="varchar(255)">
                 <constraints nullable="false"/>
             </column>
             <column name="vieweing" type="bigint">

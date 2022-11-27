@@ -13,6 +13,7 @@ public class KinogoSpringApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(KinogoSpringApplication.class, args);
+
     }
 
     @Bean

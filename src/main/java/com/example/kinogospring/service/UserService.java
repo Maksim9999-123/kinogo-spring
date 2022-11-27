@@ -53,4 +53,8 @@ public class UserService {
         user.setVerifyToken(null);
         userRepository.save(user);
     }
+
+    public Optional<User> findByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
 }

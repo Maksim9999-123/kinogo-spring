@@ -33,14 +33,13 @@ public class UserService {
         user.setEnabled(false);
         user.setVerifyToken(UUID.randomUUID().toString());
         userRepository.save(user);
-        mailService.sendHtmlEmail(user.getEmail(), "Please verify your email",
-                "Hi " + user.getName() + "\n" +
+        mailService.sendHtmlEmail(user.getEmail(), "Please verify your email", "Hi " + user.getName() + "\n" +
                         "Please verify your account by clicking on this link " +
-                        "<a href=\"http://localhost:8080/user/verify?email=" + user.getEmail() + "&token=" + user.getVerifyToken());
+                        "<a href=http://localhost:8081/user/verify?email=" + user.getEmail() + "&token=" + user.getVerifyToken());
     }
 
-    public void verifyUser(String mail, String token) throws Exception {
-        Optional<User> userOptional = userRepository.findByEmailAndVerifyToken(mail, token);
+    public void verifyUser(String email, String token) throws Exception {
+        Optional<User> userOptional = userRepository.findByEmailAndVerifyToken(email, token);
 
         if (userOptional.isEmpty()) {
             throw new Exception("User Does not exists with email and token");
@@ -57,4 +56,9 @@ public class UserService {
     public Optional<User> findByEmail(String email) {
         return userRepository.findByEmail(email);
     }
+
+    public Optional<User> findById(int id) {
+        return userRepository.findById(id);
+    }
+
 }

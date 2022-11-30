@@ -2,23 +2,19 @@ package com.example.kinogospring.controller;
 
 
 import com.example.kinogospring.entity.Coutry;
-import com.example.kinogospring.entity.MovieCountry;
 import com.example.kinogospring.entity.User;
 import com.example.kinogospring.exception.DuplicateResourceException;
+import com.example.kinogospring.repository.FavoriteMovieRepository;
+import com.example.kinogospring.repository.MovieRepository;
 import com.example.kinogospring.repository.UserRepository;
 import com.example.kinogospring.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.bind.annotation.*;
 
 import javax.mail.MessagingException;
-import java.io.IOException;
-import java.util.List;
+import java.security.Principal;
 import java.util.Optional;
 
 @Controller
@@ -27,12 +23,14 @@ public class UserContoller {
 
     private final UserService userService;
     private final UserRepository userRepository;
+    private final MovieRepository movieRepository;
+    private final FavoriteMovieRepository favoriteMovieRepository;
 
     @GetMapping("/user/verify")
-    public String verifyUser(@RequestParam("mail") String mail,
-                             @RequestParam("token") String token) throws Exception {
-        userService.verifyUser(mail,token);
-        return "redirect:/";
+    public String verifyUser(@RequestParam(value = "email") String email,
+                             @RequestParam(value = "token") String token) throws Exception {
+        userService.verifyUser(email,token);
+        return "redirect:/login";
     }
 
     @GetMapping("/registration")
@@ -59,6 +57,13 @@ public class UserContoller {
         return "login";
     }
 
+//    @GetMapping("/favorite/{id}")
+//    public String favorite(@PathVariable("id") int id, Principal principal){
+//        String name = principal.getName();
+//        favoriteMovieRepository.fav(10, id);
+//        return null;
+//
+//    }
 
 
 

@@ -1,4 +1,4 @@
-package com.example.kinogospring.security;
+package com.example.kinogo-spring.security;
 
 import com.example.kinogospring.entity.User;
 import com.example.kinogospring.exception.UnauthorizedAccessException;

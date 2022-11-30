@@ -23,11 +23,18 @@
                 <span class="underline"></span>
             </button>
             <form th:action="@{/login}" method="post" class="form form-login">
+                <div th:if="${param.error}">
+                    <div class="alert-danger" style="color: red; padding-bottom: 10px">Invalid username or password.</div>
+                </div>
+
+<!--                <div th:if="${param.logout}">-->
+<!--                    <div class="alert-info" style="color: red">You have been logged out.</div>-->
+<!--                </div>-->
                 <fieldset>
                     <legend>Please, enter your email and password for login.</legend>
                     <div class="input-block">
                         <label for="login-email">E-mail</label>
-                        <input name="email" id="login-email" type="email" required>
+                        <input name="username" id="login-email" type="email" required>
                     </div>
                     <div class="input-block">
                         <label for="login-password">Password</label>

@@ -75,7 +75,8 @@
 				<div class="movie-single-ct main-content">
 					<h1 class="bd-hd" th:text="${movie.name}"><span th:text="${movie.primere}"></span></h1>
 					<div class="social-btn">
-						<a href="#" class="parent-btn"><i class="ion-heart"></i> Add to Favorite</a>
+						<a th:if="${currentUser == null}" href="/login" class="parent-btn"><i class="ion-heart"></i> Add to Favorite</a>
+						<a th:if="${currentUser != null}" th:href="@{/favorite/{id}(id=${movie.id})}" class="parent-btn"><i class="ion-heart"></i> Add to Favorite</a>
 						<div class="hover-bnt">
 							<a href="#" class="parent-btn"><i class="ion-android-share-alt"></i>share</a>
 							<div class="hvr-item">
@@ -122,10 +123,15 @@
 									</div>
 								</div>
 								<div id="reviews" class="tab review">
-									<h1>FILM LINK</h1>
 									<video controls>
 										<source th:src="@{/movie/getVideo(fileVideo=${movie.filmVideo})}" type="video/mp4">
 									</video>
+									<div class="comment_film" th:if="${currentUser != null}">
+										<label for="subject">Comment</label>
+										<textarea id="subject" name="subject" placeholder="Write comment.." style="height:200px; width: 645px; background-color: black; color: white"></textarea>
+
+										<input type="submit" value="Submit">
+									</div>
 								</div>
 								<div id="cast" class="tab">
 									<div class="row">

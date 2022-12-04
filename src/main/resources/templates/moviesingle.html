@@ -76,7 +76,10 @@
 					<h1 class="bd-hd" th:text="${movie.name}"><span th:text="${movie.primere}"></span></h1>
 					<div class="social-btn">
 						<a th:if="${currentUser == null}" href="/login" class="parent-btn"><i class="ion-heart"></i> Add to Favorite</a>
-						<a th:if="${currentUser != null}" th:href="@{/favorite/{id}(id=${movie.id})}" class="parent-btn"><i class="ion-heart"></i> Add to Favorite</a>
+						<form th:action="@{/favorite/{movieId}(movieId=${movie.id})}" method="post" id="submitForm" th:if="${currentUser != null}">
+							<a onclick="document.getElementById('submitForm').submit();" type="submit"
+							   style="cursor:pointer;" class="parent-btn"><i class="ion-heart"></i> Add to Favorite</a>
+						</form>
 						<div class="hover-bnt">
 							<a href="#" class="parent-btn"><i class="ion-android-share-alt"></i>share</a>
 							<div class="hvr-item">
@@ -101,10 +104,6 @@
 							<i class="ion-ios-star"></i>
 							<i class="ion-ios-star"></i>
 							<i class="ion-ios-star"></i>
-							<i class="ion-ios-star"></i>
-							<i class="ion-ios-star"></i>
-							<i class="ion-ios-star"></i>
-							<i class="ion-ios-star-outline"></i>
 						</div>
 					</div>
 					<div class="movie-tabs">
@@ -115,6 +114,9 @@
 								<li><a href="#cast">Cast & Crew </a></li>
 							</ul>
 							<div class="tab-content">
+								<iframe width="420" height="315"
+										th:src="${movie.filmTrailer}">
+								</iframe>
 								<div id="overview" class="tab active">
 									<div class="row">
 										<div class="col-md-8 col-sm-12 col-xs-12">
@@ -126,11 +128,13 @@
 									<video controls>
 										<source th:src="@{/movie/getVideo(fileVideo=${movie.filmVideo})}" type="video/mp4">
 									</video>
-									<div class="comment_film" th:if="${currentUser != null}">
-										<label for="subject">Comment</label>
-										<textarea id="subject" name="subject" placeholder="Write comment.." style="height:200px; width: 645px; background-color: black; color: white"></textarea>
-
-										<input type="submit" value="Submit">
+									<div class="comment_film">
+										<form th:action="@{/comment/{movieId}(movieId=${movie.id})}" method="post" class="submitComment">
+											<label for="subject">Comment</label>
+											<textarea id="subject" name="comment" placeholder="Write comment.." style="height:200px; width: 645px; background-color: black; color: white; margin-bottom: 30px"></textarea>
+<!--											<a class="clickToComment" th:if="${currentUser != null}" onclick="document.getElementsByClassName('submitComment').submit();" type="submit" style="cursor: pointer">Comment</a>-->
+<!--											<a class="clickToComment" th:if="${currentUser == null}" href="/login" type="submit">Comment</a>-->
+										</form>
 									</div>
 								</div>
 								<div id="cast" class="tab">
@@ -143,7 +147,7 @@
 										<div class="mvcast-item">
 											<div class="cast-it">
 												<div class="cast-left" th:each="castCrew: ${castAndCrew}">
-													<a href="#" th:if="${castCrew.castCrewRole.name() == 'PRODUCER'}" th:text="${castCrew.name}"></a>
+													<a href="#" th:text="${castCrew}"></a>
 												</div>
 											</div>
 										</div>

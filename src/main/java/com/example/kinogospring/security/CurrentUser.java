@@ -1,6 +1,6 @@
 package com.example.kinogospring.security;
 
-import com.example.kinogospring.entity.User;
+import com.example.kinogospring.model.entity.User;
 import org.springframework.security.core.authority.AuthorityUtils;
 
 

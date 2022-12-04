@@ -1,4 +1,4 @@
-package com.example.kinogospring.entity;
+package com.example.kinogospring.model.enums;
 
 public enum Coutry {
     USA,
@@ -8,5 +8,6 @@ public enum Coutry {
     CHINA,
     JAPAN,
     SPAIN,
-    FRANCE
+    FRANCE,
+
 }

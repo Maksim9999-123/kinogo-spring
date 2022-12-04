@@ -113,16 +113,20 @@
   flex-wrap: wrap;
 }
 
-.comment_film>input{
-  margin-top: 20px;
-  background-color: lawngreen;
-  padding: 10px;
-  color: white;
-}
 
-.comment_film>label{
+.comment_film>form>label{
   color: white;
   font-size: 1.4em;
+  padding: 10px;
+}
+
+
+.clickToComment{
+  border: 1px solid green;
+  border-radius: 3px;
+  color: white;
+  font-weight: bold;
+  background-color: lawngreen;
   padding: 10px;
 }
 

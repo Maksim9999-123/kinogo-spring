@@ -1,14 +1,13 @@
 package com.example.kinogospring.model.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Table(name = "film_comment")
 @Entity
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -21,4 +20,5 @@ public class FilmComment {
     private User user;
     @ManyToOne
     private Movie movie;
+
 }

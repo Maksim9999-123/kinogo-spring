@@ -1,6 +1,8 @@
 package com.example.kinogospring.controller;
 
+import com.example.kinogospring.model.entity.FilmComment;
 import com.example.kinogospring.model.entity.Movie;
+import com.example.kinogospring.service.CommentMovieService;
 import com.example.kinogospring.service.MovieService;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.io.IOUtils;
@@ -14,6 +16,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
@@ -21,6 +24,7 @@ public class MovieController {
 
 
     private final MovieService movieService;
+    private final CommentMovieService commentMovieService;
 
     @Value("${kinogo.spring.images.folder}")
     private String folderPathImage;
@@ -41,6 +45,8 @@ public class MovieController {
     @GetMapping("/moviesingle/{id}")
     public String watchmovie(@PathVariable("id") int id, ModelMap modelMap) {
         List<Movie> movieList = movieService.findAllById(id);
+        List<FilmComment> commentList = commentMovieService.findCommentByMovieId(id);
+        modelMap.addAttribute("comments", commentList);
         modelMap.addAttribute("movies", movieList);
         return "moviesingle";
     }

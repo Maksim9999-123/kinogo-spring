@@ -1,7 +1,6 @@
 package com.example.kinogospring.service.impl;
 
 
-import com.example.kinogospring.service.MailService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -13,7 +12,7 @@ import javax.mail.internet.MimeMessage;
 
 @Service
 @RequiredArgsConstructor
-public class MailServiceImpl implements MailService {
+public class MailServiceImpl{
 
     private final JavaMailSender mailSender;
 

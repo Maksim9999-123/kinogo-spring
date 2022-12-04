@@ -7,6 +7,7 @@ import com.example.kinogospring.exception.MovieNotFoundException;
 import com.example.kinogospring.repository.CommentMovieRepository;
 import com.example.kinogospring.repository.MovieRepository;
 import com.example.kinogospring.security.UserDetailServiceImpl;
+import com.example.kinogospring.service.CommentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -18,21 +19,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequiredArgsConstructor
 @RequestMapping("/comment")
 public class CommentMovieController {
-    private final CommentMovieRepository commentMovieRepository;
-    private final MovieRepository movieRepository;
-    private final UserDetailServiceImpl userDetailService;
+
+    private final CommentService commentService;
+
 
     @PostMapping("/{movieId}")
-    public String filmComment(@ModelAttribute FilmComment filmComment, @PathVariable int movieId){
-        Movie movie = movieRepository.findById(movieId)
-                .orElseThrow(MovieNotFoundException::new);
-        User loggedInUser = userDetailService.getLoggedInUser();
-        FilmComment commentFilm = FilmComment.builder()
-                .user(loggedInUser)
-                .movie(movie)
-                .comment(String.valueOf(filmComment))
-                .build();
-        commentMovieRepository.save(commentFilm);
+    public String filmComment(@ModelAttribute FilmComment filmComment, @PathVariable int movieId) {
+        commentService.saveComment(filmComment,movieId);
         return String.format("redirect:/moviesingle/%s", movieId);
     }
 }

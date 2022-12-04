@@ -128,13 +128,19 @@
 									<video controls>
 										<source th:src="@{/movie/getVideo(fileVideo=${movie.filmVideo})}" type="video/mp4">
 									</video>
-									<div class="comment_film">
-										<form th:action="@{/comment/{movieId}(movieId=${movie.id})}" method="post" class="submitComment">
-											<label for="subject">Comment</label>
+									<h2 style="padding-top: 20px;">Film comments</h2>
+									<div class="comment_film" th:if="${currentUser != null}">
+										<form th:action="@{/comment/{movieId}(movieId=${movie.id})}" method="post" id="submitComment">
 											<textarea id="subject" name="comment" placeholder="Write comment.." style="height:200px; width: 645px; background-color: black; color: white; margin-bottom: 30px"></textarea>
-<!--											<a class="clickToComment" th:if="${currentUser != null}" onclick="document.getElementsByClassName('submitComment').submit();" type="submit" style="cursor: pointer">Comment</a>-->
-<!--											<a class="clickToComment" th:if="${currentUser == null}" href="/login" type="submit">Comment</a>-->
+											<a onclick="document.getElementById('submitComment').submit();" type="submit"
+											   style="cursor:pointer;" class="parent-btn-comment"><i class="ion-heart"></i> Add Comment</a>
 										</form>
+									</div>
+									<div class="all_movie_comment" style="padding-top: 30px;">
+										<div class="comment_users" th:each="comment: ${comments}">
+											<p th:text="${comment.comment}" style="padding: 10px; color: white"></p>
+											<span th:text="${comment.getUser().name}" style="font-weight: bold; color: honeydew; float: right; padding-right: 20px"></span><span style="float: right; color: honeydew;"> Author </span>
+										</div>
 									</div>
 								</div>
 								<div id="cast" class="tab">

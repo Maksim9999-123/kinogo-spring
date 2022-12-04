@@ -129,6 +129,24 @@
   background-color: lawngreen;
   padding: 10px;
 }
+.parent-btn-comment{
+  border: 1px solid green;
+  border-radius: 2px;
+  background-color: lawngreen;
+  color: white;
+  font-weight: bold;
+  font-size: 1.2em;
+  padding: 5px;
+  margin-bottom: 30px;
+}
+
+.comment_users{
+  border-right: 1px solid white;
+  border-left: 1px solid white;
+  border-top: 1px solid white;
+  width: 645px;
+  margin-bottom: 30px
+}
 
 .genres{
   margin-top: 30px;

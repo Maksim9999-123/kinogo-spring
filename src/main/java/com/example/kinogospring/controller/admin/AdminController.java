@@ -12,6 +12,6 @@ public class AdminController {
 
     @GetMapping()
     public String adminPage(ModelMap modelMap) {
-        return "form_admin";
+        return "admin_movie_add";
     }
 }

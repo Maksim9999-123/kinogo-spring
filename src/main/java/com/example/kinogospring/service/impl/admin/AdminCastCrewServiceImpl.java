@@ -1,18 +1,18 @@
 package com.example.kinogospring.service.impl.admin;
 
-import com.example.kinogospring.entity.CastCrew;
+import com.example.kinogospring.model.entity.CastCrew;
 import com.example.kinogospring.repository.CastCrewRepository;
-import com.example.kinogospring.service.adminservice.AdminService;
+import com.example.kinogospring.service.adminservice.AdminCastCrewService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
-public class AdminCastCrewServiceImpl implements AdminService<CastCrew> {
-
+public class AdminCastCrewServiceImpl implements AdminCastCrewService {
 
     private final CastCrewRepository castCrewRepository;
-
 
     @Override
     public void delete(int id) {
@@ -27,5 +27,10 @@ public class AdminCastCrewServiceImpl implements AdminService<CastCrew> {
     @Override
     public String edit(CastCrew castCrew) {
         return null;
+    }
+
+    @Override
+    public Optional getById(int id) {
+        return castCrewRepository.findById(id);
     }
 }

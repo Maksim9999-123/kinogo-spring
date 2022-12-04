@@ -1,4 +1,4 @@
-package com.example.kinogospring.entity;
+package com.example.kinogospring.model.enums;
 
 public enum Zodiac {
     RAM,

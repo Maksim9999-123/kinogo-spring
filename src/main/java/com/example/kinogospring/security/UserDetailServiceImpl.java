@@ -1,12 +1,9 @@
-package com.example.kinogo-spring.security;
+package com.example.kinogospring.security;
 
-import com.example.kinogospring.entity.User;
 import com.example.kinogospring.exception.UnauthorizedAccessException;
+import com.example.kinogospring.model.entity.User;
 import com.example.kinogospring.repository.UserRepository;
-import com.example.kinogospring.security.CurrentUser;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -19,8 +16,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class UserDetailServiceImpl implements UserDetailsService {
 
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

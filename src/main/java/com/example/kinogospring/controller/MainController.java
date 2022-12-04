@@ -1,37 +1,51 @@
 package com.example.kinogospring.controller;
 
-import com.example.kinogospring.entity.Genre;
-import com.example.kinogospring.entity.Movie;
-import com.example.kinogospring.entity.Role;
-import com.example.kinogospring.entity.User;
-import com.example.kinogospring.repository.MovieRepository;
+import com.example.kinogospring.model.entity.CastCrew;
+import com.example.kinogospring.model.entity.Genre;
+import com.example.kinogospring.model.entity.Movie;
+import com.example.kinogospring.model.entity.User;
+import com.example.kinogospring.model.enums.Role;
+import com.example.kinogospring.repository.CastCrewRepository;
+import com.example.kinogospring.repository.RatedRepository;
 import com.example.kinogospring.security.CurrentUser;
 import com.example.kinogospring.service.GenreService;
+import com.example.kinogospring.service.MovieService;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.io.IOUtils;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
 public class MainController {
+    @Value("${kinogo.spring.images.folder}")
+    private String folderPathImage;
 
+    private final MovieService movieService;
     private final GenreService genreService;
-    private final MovieRepository movieRepository;
-//    private final UserService userService;
+
+    private final RatedRepository ratedRepository;
+    private final CastCrewRepository castCrewRepository;
+
 
 
     @GetMapping("/")
     public String mainPage(ModelMap modelMap){
         List<Genre> genreList = genreService.findAll();
-        List<Movie> movieList = movieRepository.findAll();
+        List<Movie> movieList = movieService.findAll();
+        List<CastCrew> castList = castCrewRepository.findAll();
         modelMap.addAttribute("genres", genreList);
         modelMap.addAttribute("movies", movieList);
+        modelMap.addAttribute("castCrew", castList);
         return "index";
     }
 
@@ -48,12 +62,14 @@ public class MainController {
         return "redirect:/";
     }
 
-//    @RequestMapping("/search")
-//    public String search(ModelMap modelMap, @RequestParam String keyword){
-//        List<Movie> result = movieRepository.search(keyword);
-//        modelMap.addAttribute("res", result);
-//        return "index";
-//    }
+
+    @GetMapping("/castAndCrew/getImage")
+    public @ResponseBody byte[] getImage(@RequestParam("fileImage") String fileName) throws IOException {
+        InputStream inputStream = new FileInputStream(folderPathImage + File.separator + fileName);
+        return IOUtils.toByteArray(inputStream);
+    }
+
+
 
 
 }

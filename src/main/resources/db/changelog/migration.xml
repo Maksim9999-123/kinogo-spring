@@ -100,6 +100,16 @@
             <column name="verify_token" type="VARCHAR(255)"/>
         </createTable>
     </changeSet>
+    <changeSet id="123" author="Admin (generated)">
+        <createTable tableName="film_comment">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_favorite_movie"/>
+            </column>
+            <column name="comment" type="varchar(255)"/>
+            <column name="user_id" type="INT"/>
+            <column name="movie_id" type="INT"/>
+        </createTable>
+    </changeSet>
     <changeSet id="1667375953978-8" author="Admin (generated)">
         <addUniqueConstraint columnNames="genre_id" constraintName="uc_movie_genre_genre" tableName="movie_genre"/>
     </changeSet>
@@ -118,6 +128,22 @@
                                  constraintName="FK_FAVORITE_MOVIE_ON_USER" referencedColumnNames="id"
                                  referencedTableName="user"/>
     </changeSet>
+
+<!--    ////-->
+
+    <changeSet id="1234" author="Admin (generated)">
+        <addForeignKeyConstraint baseColumnNames="movie_id" baseTableName="film_comment"
+                                 constraintName="FK_FILM_COMMENT_ON_MOVIE" referencedColumnNames="id"
+                                 referencedTableName="movie"/>
+    </changeSet>
+    <changeSet id="12345" author="Admin (generated)">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="favorite_movie"
+                                 constraintName="FK_FILM_COMMENT_ON_USER" referencedColumnNames="id"
+                                 referencedTableName="user"/>
+    </changeSet>
+
+<!--    ////-->
+
     <changeSet id="1667375953978-12" author="Admin (generated)">
         <addForeignKeyConstraint baseColumnNames="movie_id" baseTableName="genre" constraintName="FK_GENRE_ON_MOVIE"
                                  referencedColumnNames="id" referencedTableName="movie"/>
@@ -139,6 +165,27 @@
         <addForeignKeyConstraint baseColumnNames="movie_id" baseTableName="movie_genre"
                                  constraintName="fk_movgen_on_movie" referencedColumnNames="id"
                                  referencedTableName="movie"/>
+    </changeSet>
+    <changeSet id="123456789" author="Admin (generated)">
+        <addColumn tableName="cast_crew">
+            <column name="profil_pic" type="varchar(255)"/>
+        </addColumn>
+    </changeSet>
+    
+    <changeSet id="1234567891" author="Admin (generated)">
+        <addColumn tableName="movie">
+            <column name="film_trailer" type="varchar(255)"></column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="12345678912" author="Admin (generated)">
+        <addColumn tableName="cast_crew">
+            <column name="biography" type="text"></column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="4564" author="Admin (generated)">
+        <modifyDataType tableName="movie" columnName="description" newDataType="text"/>
     </changeSet>
 
 </databaseChangeLog>

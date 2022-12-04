@@ -1,8 +1,7 @@
 package com.example.kinogospring.controller.admin;
 
-import com.example.kinogospring.entity.CastCrew;
-import com.example.kinogospring.service.GetService;
-import com.example.kinogospring.service.adminservice.AdminService;
+import com.example.kinogospring.model.entity.CastCrew;
+import com.example.kinogospring.service.adminservice.AdminCastCrewService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -15,14 +14,8 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class AdminCastCrewController {
 
-    private final AdminService<CastCrew> adminService;
-    private final GetService getService;
-//    @GetMapping()
-//    public String adminPage(ModelMap modelMap) {
-//        List<Book> books = bookService.findAll();
-//        modelMap.addAttribute("books", books);
-//        return "admin/admin";
-//    }
+    private final AdminCastCrewService adminCastCrewService;
+
 
     @GetMapping("/add")
     public String addCastCrewPage() {
@@ -31,13 +24,13 @@ public class AdminCastCrewController {
 
     @PostMapping("/add")
     public String addCastCrew(@ModelAttribute CastCrew castCrew) {
-        adminService.save(castCrew);
+        adminCastCrewService.save(castCrew);
         return "redirect:/admin";
     }
 
     @GetMapping("/edit/{id}")
     public String editCastCrewPage(@RequestParam("castcrewId") int id, ModelMap modelMap) {
-        Optional castCrewOptional = getService.getById(id);
+        Optional castCrewOptional = adminCastCrewService.getById(id);
         if (castCrewOptional.isEmpty()) {
             return "redirect:/admin";
         }
@@ -47,13 +40,13 @@ public class AdminCastCrewController {
 
     @PostMapping("/edit")
     public String editCastCrew(@ModelAttribute CastCrew castCrew) {
-        adminService.save(castCrew);
+        adminCastCrewService.save(castCrew);
         return "redirect:/admin";
     }
 
     @GetMapping("/remove/{id}")
     public String deleteCastCrew(@PathVariable("id") int id) {
-        adminService.delete(id);
+        adminCastCrewService.delete(id);
         return "redirect:/admin";
     }
 

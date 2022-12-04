@@ -19,7 +19,7 @@
                             <span></span>
                         </div>
                     </div>
-                    <a href="index-2.html"><img class="logo" src="images/logo1.png" alt="" width="119" height="58"></a>
+                    <a href="index-2.html"><img class="logo" src="/images/logo1.png" alt="" width="119" height="58"></a>
                 </div>
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse flex-parent" id="bs-example-navbar-collapse-1">
@@ -42,7 +42,7 @@
                             </ul>
                         </li>
                         <li class="dropdown first">
-                            <a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown" data-hover="dropdown">
+                            <a href="/castcrew">
                                 celebrities
                             </a>
                         </li>
@@ -77,15 +77,7 @@
 
             <!-- top search form -->
             <div class="top-search">
-<!--                <select>-->
-<!--                    <option value="united">TV show</option>-->
-<!--                    <option value="saab">Others</option>-->
-<!--                </select>-->
-                <input type="text" placeholder="Search for a movie, TV Show or celebrity that you are looking for">
-<!--                <input type="submit" value="Search" href="/search">-->
-<!--                <div th:each="resultat: ${result}">-->
-<!--                    <p th:text="${result}"></p>-->
-<!--                </div>-->
+                <input type="text" placeholder="Search for a movie">
             </div>
             <div class="genres">
                 <a th:href="@{/genre/{id}(id=${genre.getId})}" th:each="genre: ${genres}" th:text="${genre.name}"></a>
@@ -98,7 +90,7 @@
         <div class="container">
             <div class="flex-parent-ft">
                 <div class="flex-child-ft item1">
-                    <a href="index-2.html"><img class="logo" src="images/logo1.png" alt=""></a>
+                    <a href="index-2.html"><img class="logo" src="/images/logo1.png" alt=""></a>
                     <p>ITSpace, Gyumri<br>
                         Armenia</p>
                     <p>Call us: <a href="#">(+01) 202 342 6789</a></p>
@@ -158,8 +150,5 @@
     </footer>
 </th:block>
 
-<!--login-->
-<!--<th:block th:insert="login::loginpop"></th:block>-->
-<!--<th:block th:insert="registration::singnuppop"></th:block>-->
 </body>
 </html>

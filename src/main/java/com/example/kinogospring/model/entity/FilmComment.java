@@ -1,26 +1,24 @@
-package com.example.kinogospring.entity;
+package com.example.kinogospring.model.entity;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-@Data
+@Table(name = "film_comment")
+@Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-@Table(name = "rated")
-public class Rated {
+@Builder
+public class FilmComment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
+    private String comment;
     @ManyToOne
     private User user;
-
     @ManyToOne
     private Movie movie;
-
-    private int rate;
 }

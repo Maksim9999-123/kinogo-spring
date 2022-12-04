@@ -136,6 +136,12 @@
                                  constraintName="FK_FILM_COMMENT_ON_MOVIE" referencedColumnNames="id"
                                  referencedTableName="movie"/>
     </changeSet>
+
+    <changeSet id="789123" author="Admin (generated)">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="film_comment"
+                                 constraintName="FK_FILM_COMMENT_ON_MOVIE_USER" referencedColumnNames="id"
+                                 referencedTableName="movie"/>
+    </changeSet>
     <changeSet id="12345" author="Admin (generated)">
         <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="favorite_movie"
                                  constraintName="FK_FILM_COMMENT_ON_USER" referencedColumnNames="id"

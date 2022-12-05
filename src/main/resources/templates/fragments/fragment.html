@@ -19,7 +19,7 @@
                             <span></span>
                         </div>
                     </div>
-                    <a href="index-2.html"><img class="logo" src="/images/logo1.png" alt="" width="119" height="58"></a>
+                    <a href="/"><img class="logo" src="/images/logo1.png" alt="" width="119" height="58"></a>
                 </div>
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse flex-parent" id="bs-example-navbar-collapse-1">
@@ -59,14 +59,13 @@
                                 User <i class="fa fa-angle-down" aria-hidden="true"></i>
                             </a>
                             <ul class="dropdown-menu level1">
-                                <li><a href="userfavoritegrid.html">user favorite grid</a></li>
-                                <li><a href="userfavoritelist.html">user favorite list</a></li>
-                                <li><a href="userprofile.html">user profile</a></li>
+                                <li><a href="/user/favorite">user favorite grid</a></li>
+                                <li><a href="/user/profile">user profile</a></li>
                                 <li class="it-last"><a href="userrate.html">user rate</a></li>
                             </ul>
                         </li>
                         <li><a href="#">Help</a></li>
-                        <li><a th:if="${currentUser == null}" href="/login">LOG In</a></li>
+                        <li><a th:if="${currentUser == null}" href="/user`/login">LOG In</a></li>
                         <li><a th:if="${currentUser != null}" href="/logout">LOGOUT</a></li>
                         <span class="currentUser" th:if="${currentUser != null}" th:text="Welcome + ${currentUser.name}"></span>
                         <li><a th:if="${currentUser == null}" href="/registration">sign up</a></li>

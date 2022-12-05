@@ -2,6 +2,7 @@ package com.example.kinogospring.model.entity;
 
 import com.example.kinogospring.model.enums.Coutry;
 import com.example.kinogospring.model.enums.Role;
+import com.example.kinogospring.model.enums.Gender;
 import lombok.*;
 
 import javax.persistence.*;
@@ -29,17 +30,8 @@ public class User {
     private Role role;
     private boolean isEnabled;
     private String verifyToken;
+    @Enumerated(value = EnumType.STRING)
+    private Gender gender;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return id == user.id && age == user.age && isEnabled == user.isEnabled && Objects.equals(name, user.name) && Objects.equals(surname, user.surname) && Objects.equals(email, user.email) && coutry == user.coutry && Objects.equals(password, user.password) && role == user.role && Objects.equals(verifyToken, user.verifyToken);
-    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name, surname, email, coutry, age, password, role, isEnabled, verifyToken);
-    }
 }

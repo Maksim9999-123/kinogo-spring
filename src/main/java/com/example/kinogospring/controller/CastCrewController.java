@@ -12,6 +12,7 @@ import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
+
 public class CastCrewController {
 
     private final CastCrewService castCrewService;

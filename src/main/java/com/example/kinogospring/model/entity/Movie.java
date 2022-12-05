@@ -33,7 +33,6 @@ public class Movie {
     private String description;
     private String filmPic;
     private int vieweing;
-    private String filmComment;
     private String filmVideo;
     private String filmTrailer;
     @OneToMany
@@ -44,11 +43,11 @@ public class Movie {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Movie movie = (Movie) o;
-        return id == movie.id && totalMovierate == movie.totalMovierate && vieweing == movie.vieweing && Objects.equals(name, movie.name) && movieCountry == movie.movieCountry && Objects.equals(yearOfIdssue, movie.yearOfIdssue) && Objects.equals(primere, movie.primere) && Objects.equals(description, movie.description) && Objects.equals(filmPic, movie.filmPic) && Objects.equals(filmComment, movie.filmComment) && Objects.equals(filmVideo, movie.filmVideo) && Objects.equals(filmTrailer, movie.filmTrailer) && Objects.equals(genre, movie.genre);
+        return id == movie.id && totalMovierate == movie.totalMovierate && vieweing == movie.vieweing && Objects.equals(name, movie.name) && movieCountry == movie.movieCountry && Objects.equals(yearOfIdssue, movie.yearOfIdssue) && Objects.equals(primere, movie.primere) && Objects.equals(description, movie.description) && Objects.equals(filmPic, movie.filmPic) && Objects.equals(filmVideo, movie.filmVideo) && Objects.equals(filmTrailer, movie.filmTrailer) && Objects.equals(genre, movie.genre);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, totalMovierate, movieCountry, yearOfIdssue, primere, description, filmPic, vieweing, filmComment, filmVideo, filmTrailer, genre);
+        return Objects.hash(id, name, totalMovierate, movieCountry, yearOfIdssue, primere, description, filmPic, vieweing, filmVideo, filmTrailer, genre);
     }
 }

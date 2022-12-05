@@ -2,24 +2,20 @@ package com.example.kinogospring.controller;
 
 
 import com.example.kinogospring.model.entity.Rated;
-import com.example.kinogospring.repository.RatedRepository;
+import com.example.kinogospring.service.RatedService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/rate")
 @RequiredArgsConstructor
 public class RatedController {
+    private final RatedService ratedService;
 
-
-    private final RatedRepository ratedRepository;
-
-    @PostMapping()
-    public String rateMovie(@ModelAttribute Rated rated) {
-        ratedRepository.save(rated);
-        return "index";
+    @PostMapping("{movieId}")
+    public String rateMovie(@ModelAttribute Rated rated, @PathVariable int movieId) {
+        ratedService.saveRate(rated, movieId);
+        return String.format("redirect:/moviesingle/%s", movieId);
     }
 }

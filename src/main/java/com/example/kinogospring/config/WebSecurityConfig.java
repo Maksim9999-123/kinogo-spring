@@ -22,7 +22,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.csrf().disable()
                 .formLogin()
-                .loginPage("/login")
+                .loginPage("/user/login")
                 .and()
                 .logout()
                 .logoutUrl("/logout")

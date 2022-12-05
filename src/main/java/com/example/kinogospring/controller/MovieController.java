@@ -46,8 +46,10 @@ public class MovieController {
     public String watchmovie(@PathVariable("id") int id, ModelMap modelMap) {
         List<Movie> movieList = movieService.findAllById(id);
         List<FilmComment> commentList = commentMovieService.findCommentByMovieId(id);
+//        Optional<String> byTrailer = movieService.findByTrailer();
         modelMap.addAttribute("comments", commentList);
         modelMap.addAttribute("movies", movieList);
+//        modelMap.addAttribute("filmTrailer", byTrailer);
         return "moviesingle";
     }
 

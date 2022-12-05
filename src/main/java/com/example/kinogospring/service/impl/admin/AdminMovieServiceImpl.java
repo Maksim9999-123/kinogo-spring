@@ -2,7 +2,7 @@ package com.example.kinogospring.service.impl.admin;
 
 import com.example.kinogospring.model.entity.Movie;
 import com.example.kinogospring.repository.MovieRepository;
-import com.example.kinogospring.service.adminservice.AdminMovieService;
+import com.example.kinogospring.service.admin.AdminMovieService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;

@@ -1,12 +1,6 @@
 package com.example.kinogospring.controller;
 
 import com.example.kinogospring.model.entity.FilmComment;
-import com.example.kinogospring.model.entity.Movie;
-import com.example.kinogospring.model.entity.User;
-import com.example.kinogospring.exception.MovieNotFoundException;
-import com.example.kinogospring.repository.CommentMovieRepository;
-import com.example.kinogospring.repository.MovieRepository;
-import com.example.kinogospring.security.UserDetailServiceImpl;
 import com.example.kinogospring.service.CommentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;

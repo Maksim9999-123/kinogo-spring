@@ -2,7 +2,7 @@ package com.example.kinogospring.service.impl.admin;
 
 import com.example.kinogospring.model.entity.Genre;
 import com.example.kinogospring.repository.GenreRepository;
-import com.example.kinogospring.service.adminservice.AdminGenreService;
+import com.example.kinogospring.service.admin.AdminGenreService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

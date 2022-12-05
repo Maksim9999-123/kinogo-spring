@@ -19,6 +19,11 @@ public class MovieServiceImpl implements MovieService {
         return movieRepository.findAll();
     }
 
+//    @Override
+//    public Optional<String> findByTrailer() {
+//        return Optional.of(movieRepository.findMoviesByFilmTrailer().get().replace("watch?v=", "embed/"));
+//    }
+
     @Override
     public Optional<Movie> getById(int id) {
         return movieRepository.findById(id);

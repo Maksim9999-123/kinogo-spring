@@ -1,4 +1,4 @@
-package com.example.kinogospring.service.adminservice;
+package com.example.kinogospring.service.admin;
 
 import com.example.kinogospring.model.entity.Movie;
 import org.springframework.web.multipart.MultipartFile;

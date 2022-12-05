@@ -2,7 +2,7 @@ package com.example.kinogospring.service.impl.admin;
 
 import com.example.kinogospring.model.entity.CastCrew;
 import com.example.kinogospring.repository.CastCrewRepository;
-import com.example.kinogospring.service.adminservice.AdminCastCrewService;
+import com.example.kinogospring.service.admin.AdminCastCrewService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

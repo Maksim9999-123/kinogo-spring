@@ -193,5 +193,13 @@
     <changeSet id="4564" author="Admin (generated)">
         <modifyDataType tableName="movie" columnName="description" newDataType="text"/>
     </changeSet>
+    <changeSet id="78451123" author="Admin (generated)">
+        <addColumn tableName="user">
+            <column name="gender" type="varchar(255)"></column>
+        </addColumn>
+    </changeSet>
+    <changeSet id="788451" author="Admin (generated)">
+        <dropColumn tableName="movie" columnName="film_comment"/>
+    </changeSet>
 
 </databaseChangeLog>

@@ -1,5 +1,7 @@
 package com.example.kinogospring.controller;
 
+import com.example.kinogospring.exception.BadRequestException;
+import com.example.kinogospring.exception.EntityNotFoundException;
 import com.example.kinogospring.model.entity.CastCrew;
 import com.example.kinogospring.model.entity.Genre;
 import com.example.kinogospring.model.entity.Movie;
@@ -39,7 +41,7 @@ public class MainController {
 
 
     @GetMapping("/")
-    public String mainPage(ModelMap modelMap){
+    public String mainPage(ModelMap modelMap) throws BadRequestException {
         List<Genre> genreList = genreService.findAll();
         List<Movie> movieList = movieService.findAll();
         List<CastCrew> castList = castCrewRepository.findAll();

@@ -22,10 +22,11 @@ public class RatedServiceImpl implements RatedService {
     @Override
     public void saveRate(Rated rate, int movieId) {
         Movie movie = movieRepository.findById(movieId)
-                .orElseThrow(MovieNotFoundException::new);
+                .orElseThrow();
         User loggedInUser = userDetailService.getLoggedInUser();
         rate.setUser(loggedInUser);
         rate.setMovie(movie);
+        movie.setTotalMovierate(movie.getTotalMovierate() + rate.getRate());
         ratedRepository.save(rate);
     }
 }

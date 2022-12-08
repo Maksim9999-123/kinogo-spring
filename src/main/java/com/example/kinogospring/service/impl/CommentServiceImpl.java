@@ -22,7 +22,7 @@ public class CommentServiceImpl implements CommentService {
     @Override
     public void saveComment(FilmComment filmComment, int movieId) {
         Movie movie = movieRepository.findById(movieId)
-                .orElseThrow(MovieNotFoundException::new);
+                .orElseThrow();
         User loggedInUser = userDetailService.getLoggedInUser();
         FilmComment commentFilm = FilmComment.builder()
                 .user(loggedInUser)

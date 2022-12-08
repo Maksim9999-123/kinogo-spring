@@ -1,5 +1,7 @@
 package com.example.kinogospring.controller;
 
+import com.example.kinogospring.exception.BadRequestException;
+import com.example.kinogospring.exception.EntityNotFoundException;
 import com.example.kinogospring.model.entity.CastCrew;
 import com.example.kinogospring.service.CastCrewService;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +21,7 @@ public class CastCrewController {
 
 
     @GetMapping("/castcrew")
-    public String getAllCastCrew(ModelMap modelMap) {
+    public String getAllCastCrew(ModelMap modelMap){
         List<CastCrew> allCastCrew = castCrewService.getAll();
         int countCastCrew = castCrewService.count();
         modelMap.addAttribute("allCastCrew",allCastCrew);
@@ -28,7 +30,7 @@ public class CastCrewController {
     }
 
     @GetMapping("/castcrew/{id}")
-    public String getCastCrew(@PathVariable("id") int id, ModelMap modelMap){
+    public String getCastCrew(@PathVariable("id") int id, ModelMap modelMap) throws EntityNotFoundException {
         List<CastCrew> allById = castCrewService.findAllById(id);
         modelMap.addAttribute("getByIdCast", allById);
         return "celebritysingle";

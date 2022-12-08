@@ -38,13 +38,6 @@
 		<span></span>
 	</div>
 </div>
-<!--end of preloading-->
-<!--login form popup-->
-<!--<th:block th:insert="/fragments/fragment::loginpop"></th:block>-->
-<!--&lt;!&ndash;end of login form popup&ndash;&gt;-->
-<!--&lt;!&ndash;signup form popup&ndash;&gt;-->
-<!--<th:block th:insert="/fragments/fragment::singnuppop"></th:block>-->
-<!--end of signup form popup-->
 
 <!-- BEGIN | Header -->
 <th:block th:insert="/fragments/fragment::header"></th:block>
@@ -54,11 +47,6 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<!-- <h1> movie listing - list</h1>
-				<ul class="breadcumb">
-					<li class="active"><a href="#">Home</a></li>
-					<li> <span class="ion-ios-arrow-right"></span> movie listing</li>
-				</ul> -->
 			</div>
 		</div>
 	</div>
@@ -80,20 +68,11 @@
 							<a onclick="document.getElementById('submitForm').submit();" type="submit"
 							   style="cursor:pointer;" class="parent-btn"><i class="ion-heart"></i> Add to Favorite</a>
 						</form>
-						<div class="hover-bnt">
-							<a href="#" class="parent-btn"><i class="ion-android-share-alt"></i>share</a>
-							<div class="hvr-item">
-								<a href="#" class="hvr-grow"><i class="ion-social-facebook"></i></a>
-								<a href="#" class="hvr-grow"><i class="ion-social-twitter"></i></a>
-								<a href="#" class="hvr-grow"><i class="ion-social-googleplus"></i></a>
-								<a href="#" class="hvr-grow"><i class="ion-social-youtube"></i></a>
-							</div>
-						</div>
 					</div>
 					<div class="movie-rate">
 						<div class="rate">
 							<i class="ion-android-star"></i>
-							<p><span th:text="${movie.totalMovierate}"></span> /10<br>
+							<p><span th:text="${movie.totalMovierate}"></span><br>
 								<span class="rv" th:text="${movie.vieweing}"></span>
 							</p>
 						</div>

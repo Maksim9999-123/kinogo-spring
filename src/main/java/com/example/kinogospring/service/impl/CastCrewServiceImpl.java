@@ -1,5 +1,6 @@
 package com.example.kinogospring.service.impl;
 
+import com.example.kinogospring.exception.EntityNotFoundException;
 import com.example.kinogospring.model.entity.CastCrew;
 import com.example.kinogospring.repository.CastCrewRepository;
 import com.example.kinogospring.service.CastCrewService;
@@ -27,8 +28,12 @@ public class CastCrewServiceImpl implements CastCrewService {
     }
 
     @Override
-    public List<CastCrew> findAllById(int id) {
-        return castCrewRepository.findAllById(id);
+    public List<CastCrew> findAllById(int id) throws EntityNotFoundException {
+        List<CastCrew> allById = castCrewRepository.findAllById(id);
+        if(allById.isEmpty()){
+            throw new EntityNotFoundException("No cast and crew content for this id " + id);
+        }
+        return allById;
     }
 
     @Override

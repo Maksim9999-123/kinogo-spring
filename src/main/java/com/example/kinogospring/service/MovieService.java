@@ -1,5 +1,6 @@
 package com.example.kinogospring.service;
 
+import com.example.kinogospring.exception.EntityNotFoundException;
 import com.example.kinogospring.model.entity.Movie;
 
 import java.util.List;
@@ -10,8 +11,8 @@ public interface MovieService {
     List<Movie> findAll();
 
 //    Optional<String>findByTrailer();
-    Optional<Movie> getById(int id);
-    List<Movie> findAllById(int id);
+    Optional<Movie> getById(int id) throws EntityNotFoundException;
+    List<Movie> findAllById(int id) throws EntityNotFoundException;
     List<Movie> findTop20ByOrderByIdDesc();
     int count();
 }

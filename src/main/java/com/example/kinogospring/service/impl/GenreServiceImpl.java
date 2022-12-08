@@ -1,5 +1,6 @@
 package com.example.kinogospring.service.impl;
 
+import com.example.kinogospring.exception.BadRequestException;
 import com.example.kinogospring.model.entity.Genre;
 import com.example.kinogospring.repository.GenreRepository;
 import com.example.kinogospring.service.GenreService;

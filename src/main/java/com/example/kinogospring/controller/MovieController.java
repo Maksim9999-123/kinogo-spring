@@ -1,5 +1,6 @@
 package com.example.kinogospring.controller;
 
+import com.example.kinogospring.exception.EntityNotFoundException;
 import com.example.kinogospring.model.entity.FilmComment;
 import com.example.kinogospring.model.entity.Movie;
 import com.example.kinogospring.service.CommentMovieService;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -43,7 +45,7 @@ public class MovieController {
 
 
     @GetMapping("/moviesingle/{id}")
-    public String watchmovie(@PathVariable("id") int id, ModelMap modelMap) {
+    public String watchmovie(@PathVariable("id") int id, ModelMap modelMap) throws EntityNotFoundException{
         List<Movie> movieList = movieService.findAllById(id);
         List<FilmComment> commentList = commentMovieService.findCommentByMovieId(id);
 //        Optional<String> byTrailer = movieService.findByTrailer();
@@ -52,6 +54,7 @@ public class MovieController {
 //        modelMap.addAttribute("filmTrailer", byTrailer);
         return "moviesingle";
     }
+
 
 
     @GetMapping("/movie/getImage")

@@ -12,4 +12,9 @@ public interface UserService {
     void verifyUser(String email, String token) throws Exception;
 
     Optional<User> findByEmail(String email);
+
+    public User update(User user);
+
+
+
 }

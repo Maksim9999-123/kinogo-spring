@@ -11,6 +11,8 @@ import com.example.kinogospring.service.FavoriteService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class FavoriteServiceImpl implements FavoriteService {
@@ -21,13 +23,18 @@ public class FavoriteServiceImpl implements FavoriteService {
 
     public void favoriteMovie(int movieId) {
         Movie movie = movieRepository.findById(movieId)
-                .orElseThrow(MovieNotFoundException::new);
+                .orElseThrow();
         User loggedInUser = userDetailService.getLoggedInUser();
         FavoriteMovie favoriteMovie = FavoriteMovie.builder()
                 .user(loggedInUser)
                 .movie(movie)
                 .build();
         favoriteMovieRepository.save(favoriteMovie);
+    }
+
+    @Override
+    public List<FavoriteMovie> findAll() {
+        return favoriteMovieRepository.findAll();
     }
 
 

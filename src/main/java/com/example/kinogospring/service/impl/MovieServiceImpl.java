@@ -1,5 +1,6 @@
 package com.example.kinogospring.service.impl;
 
+import com.example.kinogospring.exception.EntityNotFoundException;
 import com.example.kinogospring.model.entity.Movie;
 import com.example.kinogospring.repository.MovieRepository;
 import com.example.kinogospring.service.MovieService;
@@ -30,8 +31,16 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public List<Movie> findAllById(int id) {
-        return movieRepository.findAllById(id);
+    public List<Movie> findAllById(int id) throws EntityNotFoundException {
+        List<Movie> allById = movieRepository.findAllById(id);
+        if(allById.isEmpty()){
+            throw new EntityNotFoundException("No movie content for this id " + id);
+        }
+        for (Movie movie : allById) {
+            movie.setVieweing(movie.getVieweing() + 1);
+            movieRepository.save(movie);
+        }
+        return allById;
     }
 
     @Override

@@ -6,7 +6,6 @@ import com.example.kinogospring.model.entity.User;
 import com.example.kinogospring.exception.DuplicateResourceException;
 import com.example.kinogospring.repository.UserRepository;
 import com.example.kinogospring.service.UserService;
-import com.example.kinogospring.service.impl.MailServiceImpl;
 import com.sun.jdi.request.DuplicateRequestException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -59,5 +58,16 @@ public class UserServiceImpl implements UserService {
     public Optional<User> findByEmail(String email) {
         return userRepository.findByEmail(email);
     }
+
+    @Override
+    public User update(User user) {
+        return userRepository.save(user);
+    }
+
+
+//    @Override
+//    public Optional<User> update(int id) {
+//        return userRepository.save(id);
+//    }
 
 }

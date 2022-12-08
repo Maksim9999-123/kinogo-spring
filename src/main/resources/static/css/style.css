@@ -8406,3 +8406,7 @@ footer.full-width-ft .ft-copyright {
   color: #f5b50a !important;
 }
 
+.page-single{
+  margin: auto !important;
+}
+

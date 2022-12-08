@@ -1,7 +1,10 @@
 package com.example.kinogospring.controller;
 
+import com.example.kinogospring.exception.BadRequestException;
+import com.example.kinogospring.exception.EntityNotFoundException;
 import com.example.kinogospring.model.entity.Movie;
 import com.example.kinogospring.repository.MovieRepository;
+import com.example.kinogospring.service.MovieService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -13,14 +16,14 @@ import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/genre")
 public class GenreController {
 
     private final MovieRepository movieRepository;
+    private final MovieService movieService;
 
     @GetMapping("/genre/{id}")
-    public String openGenre(@PathVariable("id") int id, ModelMap modelMap){
-        List<Movie> allMovie = movieRepository.findAllById(id);
+    public String openGenre(@PathVariable("id") int id, ModelMap modelMap) throws EntityNotFoundException {
+        List<Movie> allMovie = movieService.findAllById(id);
         modelMap.addAttribute("movies", allMovie);
         return "moviegrid";
     }

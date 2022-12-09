@@ -6,9 +6,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.Valid;
 import java.util.Optional;
 
 @Controller
@@ -32,7 +34,9 @@ public class AdminMovieController {
 
 
     @PostMapping("/add")
-    public String addCastCrew(@ModelAttribute Movie movie, @RequestParam("files") MultipartFile[] files) {
+    public String addCastCrew(@ModelAttribute @Valid Movie movie,
+                              BindingResult bindingResult,
+                              @RequestParam("files") MultipartFile[] files) {
         adminMovieService.save(movie,files);
         return "redirect:/";
     }
@@ -48,7 +52,11 @@ public class AdminMovieController {
     }
 
     @PostMapping("/edit")
-    public String editMovie(@ModelAttribute Movie movie) {
+    public String editMovie(@ModelAttribute @Valid Movie movie,
+                            BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "admin_movie_add";
+        }
         // adminMovieService.save(movie);
         return "redirect:/admin";
     }

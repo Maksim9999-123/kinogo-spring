@@ -6,8 +6,10 @@ import com.example.kinogospring.service.admin.AdminGenreService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.Optional;
 
 @Controller
@@ -20,11 +22,15 @@ public class AdminGenreController {
 
     @GetMapping("/add")
     public String addMoviePage() {
-        return "";
+        return "admin_movie_add";
     }
 
     @PostMapping("/add")
-    public String addGenre(@ModelAttribute Genre genre) {
+    public String addGenre(@ModelAttribute @Valid Genre genre,
+                           BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "admin_movie_add";
+        }
         adminGenreService.save(genre);
         return "redirect:/admin";
     }
@@ -40,7 +46,11 @@ public class AdminGenreController {
     }
 
     @PostMapping("/edit")
-    public String editGenre(@ModelAttribute Genre genre) {
+    public String editGenre(@ModelAttribute @Valid Genre genre,
+                            BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "admin_movie_add";
+        }
         adminGenreService.save(genre);
         return "redirect:/admin";
     }

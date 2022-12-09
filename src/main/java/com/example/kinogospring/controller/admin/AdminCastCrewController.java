@@ -5,8 +5,10 @@ import com.example.kinogospring.service.admin.AdminCastCrewService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.Optional;
 
 @Controller
@@ -19,11 +21,15 @@ public class AdminCastCrewController {
 
     @GetMapping("/add")
     public String addCastCrewPage() {
-        return "";
+        return "table_admin";
     }
 
     @PostMapping("/add")
-    public String addCastCrew(@ModelAttribute CastCrew castCrew) {
+    public String addCastCrew(@ModelAttribute @Valid CastCrew castCrew,
+                              BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "table_admin";
+        }
         adminCastCrewService.save(castCrew);
         return "redirect:/admin";
     }
@@ -39,7 +45,11 @@ public class AdminCastCrewController {
     }
 
     @PostMapping("/edit")
-    public String editCastCrew(@ModelAttribute CastCrew castCrew) {
+    public String editCastCrew(@ModelAttribute @Valid CastCrew castCrew,
+                               BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "table_admin";
+        }
         adminCastCrewService.save(castCrew);
         return "redirect:/admin";
     }

@@ -15,9 +15,11 @@ import com.example.kinogospring.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.mail.MessagingException;
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -73,7 +75,8 @@ public class UserContoller {
     }
 
     @PostMapping("/registration")
-    public String addUser(@ModelAttribute User user,
+    public String addUser(@ModelAttribute @Valid User user,
+                          BindingResult bindingResult,
                           ModelMap modelMap) throws MessagingException, DuplicateResourceException {
         Optional<User> byEmail = userService.findByEmail(user.getEmail());
         if (byEmail.isPresent()) {

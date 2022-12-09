@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/favorite")
+@RequestMapping("/v1/favorite")
 public class FavoriteMovieController{
 
     private final FavoriteService favoriteService;

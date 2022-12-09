@@ -17,8 +17,6 @@ import java.util.List;
 @Controller
 @RequiredArgsConstructor
 public class GenreController {
-
-    private final MovieRepository movieRepository;
     private final MovieService movieService;
 
     @GetMapping("/genre/{id}")

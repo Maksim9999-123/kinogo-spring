@@ -10,6 +10,7 @@ import com.example.kinogospring.model.enums.Role;
 import com.example.kinogospring.repository.CastCrewRepository;
 import com.example.kinogospring.repository.RatedRepository;
 import com.example.kinogospring.security.CurrentUser;
+import com.example.kinogospring.service.CastCrewService;
 import com.example.kinogospring.service.GenreService;
 import com.example.kinogospring.service.MovieService;
 import lombok.RequiredArgsConstructor;
@@ -31,12 +32,9 @@ import java.util.List;
 public class MainController {
     @Value("${kinogo.spring.images.folder}")
     private String folderPathImage;
-
     private final MovieService movieService;
     private final GenreService genreService;
-
-    private final RatedRepository ratedRepository;
-    private final CastCrewRepository castCrewRepository;
+    private final CastCrewService castCrewService;
 
 
 
@@ -44,7 +42,7 @@ public class MainController {
     public String mainPage(ModelMap modelMap) throws BadRequestException {
         List<Genre> genreList = genreService.findAll();
         List<Movie> movieList = movieService.findAll();
-        List<CastCrew> castList = castCrewRepository.findAll();
+        List<CastCrew> castList = castCrewService.getAll();
         modelMap.addAttribute("genres", genreList);
         modelMap.addAttribute("movies", movieList);
         modelMap.addAttribute("castCrew", castList);

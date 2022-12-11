@@ -1,18 +1,16 @@
 package com.itspace.kinogospringweb.controller;
 
-import com.example.kinogospring.exception.BadRequestException;
-import com.example.kinogospring.exception.EntityNotFoundException;
-import com.example.kinogospring.model.entity.CastCrew;
-import com.example.kinogospring.model.entity.Genre;
-import com.example.kinogospring.model.entity.Movie;
-import com.example.kinogospring.model.entity.User;
-import com.example.kinogospring.model.enums.Role;
-import com.example.kinogospring.repository.CastCrewRepository;
-import com.example.kinogospring.repository.RatedRepository;
-import com.itspace.kinogospringweb.security.CurrentUser;
-import com.example.kinogospring.service.CastCrewService;
-import com.example.kinogospring.service.GenreService;
-import com.example.kinogospring.service.MovieService;
+
+import com.itspace.kinogospringcommon.exception.BadRequestException;
+import com.itspace.kinogospringcommon.model.entity.CastCrew;
+import com.itspace.kinogospringcommon.model.entity.Genre;
+import com.itspace.kinogospringcommon.model.entity.Movie;
+import com.itspace.kinogospringcommon.model.entity.User;
+import com.itspace.kinogospringcommon.model.entity.Role;
+import com.itspace.kinogospringcommon.service.CastCrewService;
+import com.itspace.kinogospringcommon.service.GenreService;
+import com.itspace.kinogospringcommon.service.MovieService;
+import com.itspace.kinogospringcommon.security.CurrentUser;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Value;

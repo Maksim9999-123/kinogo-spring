@@ -5,7 +5,7 @@ import com.itspace.kinogospringcommon.model.entity.Movie;
 import com.itspace.kinogospringcommon.model.entity.User;
 import com.itspace.kinogospringcommon.repository.FavoriteMovieRepository;
 import com.itspace.kinogospringcommon.repository.MovieRepository;
-import com.example.kinogospring.security.UserDetailServiceImpl;
+import com.itspace.kinogospringcommon.security.UserDetailServiceImpl;
 import com.itspace.kinogospringcommon.service.FavoriteService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

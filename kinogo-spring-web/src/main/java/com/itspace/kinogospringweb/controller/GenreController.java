@@ -1,16 +1,14 @@
 package com.itspace.kinogospringweb.controller;
 
-import com.example.kinogospring.exception.BadRequestException;
-import com.example.kinogospring.exception.EntityNotFoundException;
-import com.example.kinogospring.model.entity.Movie;
-import com.example.kinogospring.repository.MovieRepository;
-import com.example.kinogospring.service.MovieService;
+
+import com.itspace.kinogospringcommon.exception.EntityNotFoundException;
+import com.itspace.kinogospringcommon.model.entity.Movie;
+import com.itspace.kinogospringcommon.service.MovieService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 

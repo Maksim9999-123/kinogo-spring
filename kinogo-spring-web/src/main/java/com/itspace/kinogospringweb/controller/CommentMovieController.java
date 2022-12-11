@@ -1,7 +1,7 @@
 package com.itspace.kinogospringweb.controller;
 
-import com.example.kinogospring.model.entity.FilmComment;
-import com.example.kinogospring.service.CommentService;
+import com.itspace.kinogospringcommon.model.entity.FilmComment;
+import com.itspace.kinogospringcommon.service.CommentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;

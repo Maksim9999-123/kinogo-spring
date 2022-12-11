@@ -1,6 +1,6 @@
 package com.itspace.kinogospringweb.controller;
 
-import com.example.kinogospring.service.FavoriteService;
+import com.itspace.kinogospringcommon.service.FavoriteService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;

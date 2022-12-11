@@ -2,9 +2,15 @@
 <project version="4">
   <component name="PersistenceUnitSettings">
     <persistence-units>
-      <persistence-unit name="Default">
+      <persistence-unit name="entity">
         <packages>
           <package value="com.example.kinogospring" />
+          <package value="com.itspace.kinogospringcommon.model.entity" />
+        </packages>
+      </persistence-unit>
+      <persistence-unit name="Default">
+        <packages>
+          <package value="com.itspace.kinogospringcommon.model.entity" />
         </packages>
       </persistence-unit>
     </persistence-units>

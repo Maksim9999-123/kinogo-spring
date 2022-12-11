@@ -1,8 +1,7 @@
 package com.itspace.kinogospringweb.controller;
 
-
-import com.example.kinogospring.model.entity.Rated;
-import com.example.kinogospring.service.RatedService;
+import com.itspace.kinogospringcommon.model.entity.Rated;
+import com.itspace.kinogospringcommon.service.RatedService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;

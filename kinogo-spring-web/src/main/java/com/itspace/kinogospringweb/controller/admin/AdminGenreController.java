@@ -1,8 +1,7 @@
 package com.itspace.kinogospringweb.controller.admin;
 
-
-import com.example.kinogospring.model.entity.Genre;
-import com.example.kinogospring.service.admin.AdminGenreService;
+import com.itspace.kinogospringcommon.model.entity.Genre;
+import com.itspace.kinogospringcommon.service.admin.AdminGenreService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

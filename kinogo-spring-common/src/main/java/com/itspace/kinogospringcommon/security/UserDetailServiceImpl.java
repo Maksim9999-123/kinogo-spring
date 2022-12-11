@@ -1,8 +1,8 @@
-package com.itspace.kinogospringweb.security;
+package com.itspace.kinogospringcommon.security;
 
-import com.example.kinogospring.exception.UnauthorizedAccessException;
-import com.example.kinogospring.model.entity.User;
-import com.example.kinogospring.repository.UserRepository;
+import com.itspace.kinogospringcommon.exception.UnauthorizedAccessException;
+import com.itspace.kinogospringcommon.model.entity.User;
+import com.itspace.kinogospringcommon.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;

@@ -1,9 +1,8 @@
 package com.itspace.kinogospringweb.controller;
 
-import com.example.kinogospring.exception.BadRequestException;
-import com.example.kinogospring.exception.EntityNotFoundException;
-import com.example.kinogospring.model.entity.CastCrew;
-import com.example.kinogospring.service.CastCrewService;
+import com.itspace.kinogospringcommon.exception.EntityNotFoundException;
+import com.itspace.kinogospringcommon.model.entity.CastCrew;
+import com.itspace.kinogospringcommon.service.CastCrewService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

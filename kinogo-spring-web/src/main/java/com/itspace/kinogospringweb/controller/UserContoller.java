@@ -1,17 +1,14 @@
 package com.itspace.kinogospringweb.controller;
 
 
-import com.example.kinogospring.exception.DuplicateResourceException;
-import com.example.kinogospring.model.entity.FavoriteMovie;
-import com.example.kinogospring.model.entity.Genre;
-import com.example.kinogospring.model.entity.User;
-import com.example.kinogospring.model.enums.Coutry;
-import com.example.kinogospring.model.enums.Gender;
-import com.example.kinogospring.repository.FavoriteMovieRepository;
-import com.itspace.kinogospringweb.security.UserDetailServiceImpl;
-import com.example.kinogospring.service.FavoriteService;
-import com.example.kinogospring.service.GenreService;
-import com.example.kinogospring.service.UserService;
+import com.itspace.kinogospringcommon.exception.DuplicateResourceException;
+import com.itspace.kinogospringcommon.model.entity.FavoriteMovie;
+import com.itspace.kinogospringcommon.model.entity.User;
+import com.itspace.kinogospringcommon.model.entity.Coutry;
+import com.itspace.kinogospringcommon.model.entity.Gender;
+import com.itspace.kinogospringcommon.security.UserDetailServiceImpl;
+import com.itspace.kinogospringcommon.service.FavoriteService;
+import com.itspace.kinogospringcommon.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

@@ -1,6 +1,5 @@
 package com.itspace.kinogospringcommon.model.entity;
 
-import com.itspace.kinogospringcommon.model.enums.MovieCountry;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -34,7 +33,6 @@ public class Movie {
     @Positive(message = "movieRate can`t be smaller than 0")
     private int totalMovierate;
     @Enumerated(value = EnumType.STRING)
-    @NotEmpty
     private MovieCountry movieCountry;
     @DateTimeFormat(pattern = "dd-mm-yyyy")
     private Date yearOfIdssue;

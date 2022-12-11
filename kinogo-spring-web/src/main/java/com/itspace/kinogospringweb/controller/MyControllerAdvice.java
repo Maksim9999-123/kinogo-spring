@@ -1,9 +1,7 @@
 package com.itspace.kinogospringweb.controller;
 
-
-
-import com.example.kinogospring.model.entity.User;
-import com.itspace.kinogospringweb.security.CurrentUser;
+import com.itspace.kinogospringcommon.model.entity.User;
+import com.itspace.kinogospringcommon.security.CurrentUser;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ModelAttribute;

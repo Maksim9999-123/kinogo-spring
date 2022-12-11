@@ -1,7 +1,5 @@
 package com.itspace.kinogospringcommon.model.entity;
 
-import com.itspace.kinogospringcommon.model.enums.CastCrewRole;
-import com.itspace.kinogospringcommon.model.enums.Zodiac;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 

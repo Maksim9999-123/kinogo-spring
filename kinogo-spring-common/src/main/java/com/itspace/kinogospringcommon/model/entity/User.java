@@ -1,8 +1,5 @@
 package com.itspace.kinogospringcommon.model.entity;
 
-import com.itspace.kinogospringcommon.model.enums.Coutry;
-import com.itspace.kinogospringcommon.model.enums.Role;
-import com.itspace.kinogospringcommon.model.enums.Gender;
 import lombok.*;
 
 import javax.persistence.*;

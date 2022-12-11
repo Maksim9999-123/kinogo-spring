@@ -5,7 +5,7 @@ import com.itspace.kinogospringcommon.model.entity.Rated;
 import com.itspace.kinogospringcommon.model.entity.User;
 import com.itspace.kinogospringcommon.repository.MovieRepository;
 import com.itspace.kinogospringcommon.repository.RatedRepository;
-import com.example.kinogospring.security.UserDetailServiceImpl;
+import com.itspace.kinogospringcommon.security.UserDetailServiceImpl;
 import com.itspace.kinogospringcommon.service.RatedService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

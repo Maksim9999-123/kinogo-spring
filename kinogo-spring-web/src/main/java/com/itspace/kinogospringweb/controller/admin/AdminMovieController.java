@@ -1,7 +1,7 @@
 package com.itspace.kinogospringweb.controller.admin;
 
-import com.example.kinogospring.model.entity.Movie;
-import com.example.kinogospring.service.admin.AdminMovieService;
+import com.itspace.kinogospringcommon.model.entity.Movie;
+import com.itspace.kinogospringcommon.service.admin.AdminMovieService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;

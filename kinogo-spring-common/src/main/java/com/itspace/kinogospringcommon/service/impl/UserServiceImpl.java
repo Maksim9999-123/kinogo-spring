@@ -1,7 +1,7 @@
 package com.itspace.kinogospringcommon.service.impl;
 
 
-import com.itspace.kinogospringcommon.model.enums.Role;
+import com.itspace.kinogospringcommon.model.entity.Role;
 import com.itspace.kinogospringcommon.model.entity.User;
 import com.itspace.kinogospringcommon.exception.DuplicateResourceException;
 import com.itspace.kinogospringcommon.repository.UserRepository;

@@ -6,6 +6,8 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
+import javax.persistence.PrePersist;
+
 @ComponentScan({"com.itspace.kinogospringcommon.*", "com.itspace.kinogospringrest.*"})
 @EnableJpaRepositories(basePackages = {"com.itspace.kinogospringcommon.repository"})
 @EntityScan({"com.itspace.kinogospringcommon.model.entity"})

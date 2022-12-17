@@ -2,6 +2,7 @@ package com.itspace.kinogospringrest.security;
 
 import com.itspace.kinogospringcommon.security.UserDetailServiceImpl;
 import com.itspace.kinogospringrest.util.JwtTokenUtil;
+import liquibase.integration.servlet.GenericServletWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -24,7 +25,7 @@ public class JWTAuthenticationTokenFilter extends OncePerRequestFilter {
     @Autowired
     private UserDetailServiceImpl userDetailService;
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+    protected void doFilterInternal(GenericServletWrapper.HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         String requestHeader = request.getHeader("Authorization");
         String username = null;
         String authToken = null;

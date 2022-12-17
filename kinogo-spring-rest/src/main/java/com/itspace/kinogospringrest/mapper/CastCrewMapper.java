@@ -8,6 +8,8 @@ import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface CastCrewMapper {
+
+    CastCrew map(CastCrewCreateDto castCrewCreateDto);
     CastCrewResponseDto map(CastCrew castCrew);
     List<CastCrewResponseDto> map(List<CastCrew> castCrewList);
 }

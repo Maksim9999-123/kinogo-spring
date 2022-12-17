@@ -1,18 +1,25 @@
 package com.itspace.kinogospringcommon.service;
 
-import com.itspace.kinogospringcommon.exception.EntityNotFoundException;
 import com.itspace.kinogospringcommon.model.entity.Movie;
 
 import java.util.List;
-import java.util.Optional;
+
+/**
+ * Service interface for class {@link Movie}.
+ *
+ * @author Albert Nadoyan
+ * @version 1.0
+ */
 
 public interface MovieService {
 
     List<Movie> findAll();
 
-//    Optional<String>findByTrailer();
-    Optional<Movie> getById(int id) throws EntityNotFoundException;
-    List<Movie> findAllById(int id) throws EntityNotFoundException;
+    List<Movie> findAllById(int id);
+
+    Movie getById(int id);
+
     List<Movie> findTop20ByOrderByIdDesc();
+
     int count();
 }

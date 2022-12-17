@@ -4,7 +4,6 @@ import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import javax.validation.constraints.*;
 import java.util.Date;
 import java.util.Objects;
 
@@ -20,22 +19,11 @@ public class CastCrew {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @NotEmpty(message = "castCrew Name should not be empty")
-    @Size(min = 4, max = 20, message = "castCrew Name should be between 4 and 20 character")
     private String name;
-
-    @NotEmpty(message = "castCrew career should not be empty")
-    @Size(min = 4, max = 20, message = "castCrew career should be between 4 and 20 character")
     private String career;
-
-    @DecimalMin("0.50")
-    @DecimalMax("2.5")
     private double height;
     @DateTimeFormat(pattern = "dd.MM.yyyy")
-    //?
     private Date dateBirth;
-
-    @Positive(message = "castCrew Age can`t be smaller than 0")
     private int age;
     @Enumerated(value = EnumType.STRING)
     private Zodiac zodiac;

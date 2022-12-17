@@ -1,16 +1,19 @@
 package com.itspace.kinogospringcommon.security;
 
 import com.itspace.kinogospringcommon.exception.UnauthorizedAccessException;
+import com.itspace.kinogospringcommon.exception.UserNotFoundException;
 import com.itspace.kinogospringcommon.model.entity.User;
 import com.itspace.kinogospringcommon.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+
+import static com.itspace.kinogospringcommon.exception.ErrorHandler.BAD_CREDENTIALS;
+import static com.itspace.kinogospringcommon.exception.ErrorHandler.USER_NAME_NOT_FOUND;
 
 @Service
 @RequiredArgsConstructor
@@ -19,10 +22,10 @@ public class UserDetailServiceImpl implements UserDetailsService {
     private final UserRepository userRepository;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String username){
         Optional<User> byEmail = userRepository.findByEmail(username);
         if (byEmail.isEmpty()) {
-            throw new UsernameNotFoundException("username does not exists");
+            throw new UserNotFoundException(USER_NAME_NOT_FOUND);
         }
         return new CurrentUser(byEmail.get());
     }
@@ -36,10 +39,10 @@ public class UserDetailServiceImpl implements UserDetailsService {
             if (byEmail.isPresent()) {
                 return byEmail.get();
             } else {
-                throw new UsernameNotFoundException("username does not exists");
+                throw new UserNotFoundException(USER_NAME_NOT_FOUND);
             }
         }
-        throw new UnauthorizedAccessException("User is not logged in");
+        throw new UnauthorizedAccessException(BAD_CREDENTIALS);
 
     }
 }

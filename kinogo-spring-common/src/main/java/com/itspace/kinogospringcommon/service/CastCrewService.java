@@ -6,6 +6,13 @@ import com.itspace.kinogospringcommon.model.entity.CastCrew;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Service interface for class {@link CastCrew}.
+ *
+ * @author Maksim Aslanyan
+ * @version 1.0
+ */
+
 public interface CastCrewService {
 
     List<CastCrew> getAll();

@@ -3,7 +3,6 @@ package com.itspace.kinogospringcommon.model.entity;
 import lombok.*;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import java.util.Objects;
 
 @Table(name = "film_comment")
@@ -17,8 +16,6 @@ public class FilmComment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
-    @NotBlank
     private String comment;
     @ManyToOne
     private User user;

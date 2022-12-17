@@ -74,8 +74,8 @@ public class UserContoller {
     @PostMapping("/registration")
     public String addUser(@ModelAttribute @Valid User user,
                           BindingResult bindingResult,
-                          ModelMap modelMap) throws MessagingException, DuplicateResourceException {
-        Optional<User> byEmail = userService.findByEmail(user.getEmail());
+                          ModelMap modelMap) {
+        User byEmail = userService.findByEmail(user.getEmail());
         if (byEmail.isPresent()) {
             modelMap.addAttribute("errorMessageEmail", "Email already in use");
             return "registration";

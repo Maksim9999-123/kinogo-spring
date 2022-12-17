@@ -4,10 +4,6 @@ import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Positive;
-import javax.validation.constraints.Size;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -26,11 +22,8 @@ public class Movie {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @NotEmpty(message = "movie Name should not be empty")
-    @Size(min = 4, max = 20, message = "movie Name should be between 4 and 20 character")
     private String name;
 
-    @Positive(message = "movieRate can`t be smaller than 0")
     private int totalMovierate;
     @Enumerated(value = EnumType.STRING)
     private MovieCountry movieCountry;
@@ -39,18 +32,15 @@ public class Movie {
     @DateTimeFormat(pattern = "dd-mm-yyyy")
     private Date primere;
 
-    @NotBlank
     private String description;
 
 
     private String filmPic;
     private int vieweing;
-    @NotEmpty
     private String filmVideo;
 
     private String filmTrailer;
     @OneToMany
-    @NotEmpty
     private List<Genre> genre;
 
     @Override

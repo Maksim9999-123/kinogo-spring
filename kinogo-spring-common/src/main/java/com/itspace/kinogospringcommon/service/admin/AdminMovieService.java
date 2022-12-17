@@ -3,12 +3,19 @@ package com.itspace.kinogospringcommon.service.admin;
 import com.itspace.kinogospringcommon.model.entity.Movie;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.util.Optional;
-
+/**
+ * Service interface for class {@link AdminMovieService}.
+ *
+ * @author Maksim Aslanyan
+ * @version 1.0
+ */
 public interface AdminMovieService {
     void delete(int id);
-    void save(Movie movie, MultipartFile[] files);
-    String edit(Movie movie);
 
-    Optional<Movie> getById(int id);
+    Movie save(Movie movie, MultipartFile[] files);
+
+    Movie edit(int id, Movie movie);
+
+    Movie getById(int id);
+
 }

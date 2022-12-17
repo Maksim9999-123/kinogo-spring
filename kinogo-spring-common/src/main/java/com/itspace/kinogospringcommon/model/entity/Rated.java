@@ -3,7 +3,6 @@ package com.itspace.kinogospringcommon.model.entity;
 import lombok.*;
 
 import javax.persistence.*;
-import javax.validation.constraints.Size;
 import java.util.Objects;
 
 @Getter
@@ -18,14 +17,10 @@ public class Rated {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
     @ManyToOne
     private User user;
-
     @ManyToOne
     private Movie movie;
-
-    @Size(min = 1, max = 5, message = "Name should be between 1 and 5 character")
     private int rate;
 
     @Override

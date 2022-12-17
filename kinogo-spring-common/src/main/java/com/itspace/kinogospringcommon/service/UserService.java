@@ -1,19 +1,22 @@
 package com.itspace.kinogospringcommon.service;
 
-import com.itspace.kinogospringcommon.exception.DuplicateResourceException;
 import com.itspace.kinogospringcommon.model.entity.User;
 
-import javax.mail.MessagingException;
-import java.util.Optional;
+/**
+ * Service interface for class {@link User}.
+ *
+ * @author Albert Nadoyan
+ * @version 1.0
+ */
 
 public interface UserService {
 
-    void save(User user) throws DuplicateResourceException, MessagingException;
-    void verifyUser(String email, String token) throws Exception;
+    void save(User user);
+    void verifyUser(String email, String token);
 
-    Optional<User> findByEmail(String email);
+    User findByEmail(String email);
 
-    public User update(User user);
+    User update(User user);
 
 
 

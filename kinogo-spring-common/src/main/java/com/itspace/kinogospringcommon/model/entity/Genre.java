@@ -3,8 +3,6 @@ package com.itspace.kinogospringcommon.model.entity;
 import lombok.*;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
 import java.util.Objects;
 
 @Getter
@@ -18,9 +16,6 @@ public class Genre {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
-    @NotEmpty
-    @Size(min = 4, max = 18, message = "genre Name should be between 4 and 18 character")
     private String name;
     @ManyToOne
     private Movie movie;

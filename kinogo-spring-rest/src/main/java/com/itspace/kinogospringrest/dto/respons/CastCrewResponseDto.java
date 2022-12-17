@@ -1,4 +1,4 @@
-package com.itspace.kinogospringrest.dto;
+package com.itspace.kinogospringrest.dto.respons;
 
 import com.itspace.kinogospringcommon.model.entity.Zodiac;
 import lombok.AllArgsConstructor;

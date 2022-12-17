@@ -37,7 +37,7 @@ public class AdminMovieController {
     public String addCastCrew(@ModelAttribute @Valid Movie movie,
                               BindingResult bindingResult,
                               @RequestParam("files") MultipartFile[] files) {
-        adminMovieService.save(movie,files);
+        adminMovieService.save(movie, files);
         return "redirect:/";
     }
 

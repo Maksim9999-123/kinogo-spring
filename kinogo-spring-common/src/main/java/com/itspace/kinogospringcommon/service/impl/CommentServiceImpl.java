@@ -1,5 +1,6 @@
 package com.itspace.kinogospringcommon.service.impl;
 
+import com.itspace.kinogospringcommon.exception.ErrorHandler;
 import com.itspace.kinogospringcommon.model.entity.FilmComment;
 import com.itspace.kinogospringcommon.model.entity.Movie;
 import com.itspace.kinogospringcommon.model.entity.User;
@@ -9,6 +10,8 @@ import com.itspace.kinogospringcommon.security.UserDetailServiceImpl;
 import com.itspace.kinogospringcommon.service.CommentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import static com.itspace.kinogospringcommon.exception.ErrorHandler.MOVIE_NOT_FOUND;
 
 @Service
 @RequiredArgsConstructor
@@ -20,8 +23,7 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     public void saveComment(FilmComment filmComment, int movieId) {
-        Movie movie = movieRepository.findById(movieId)
-                .orElseThrow();
+        Movie movie = movieRepository.findById(movieId);
         User loggedInUser = userDetailService.getLoggedInUser();
         FilmComment commentFilm = FilmComment.builder()
                 .user(loggedInUser)

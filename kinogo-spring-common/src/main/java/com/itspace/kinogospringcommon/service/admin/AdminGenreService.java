@@ -2,13 +2,18 @@ package com.itspace.kinogospringcommon.service.admin;
 
 import com.itspace.kinogospringcommon.model.entity.Genre;
 
-import java.util.Optional;
+/**
+ * Service interface for class {@link AdminGenreService}.
+ *
+ * @author Maksim Aslanyan
+ * @version 1.0
+ */
 
 public interface AdminGenreService {
 
     void delete(int id);
     void save(Genre genre);
-    String edit(Genre genre);
+    Genre edit(Genre genre, int id);
 
-    Optional<Genre> getById(int id);
+    Genre getById(int id);
 }

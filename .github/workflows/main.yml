@@ -30,4 +30,6 @@ jobs:
       if: success()
       run: |
         echo "Branch can be compiled. Merging now."
-        git merge --no-ff ${{ github.head_ref }}>
+        git checkout master
+        git merge --no-ff ${{ github.head_ref }}
+        git push origin master

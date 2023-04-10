@@ -33,3 +33,5 @@ jobs:
         git checkout master
         git merge --no-ff ${{ github.head_ref }}
         git push origin master
+        
+        

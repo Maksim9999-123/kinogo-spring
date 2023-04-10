@@ -45,6 +45,8 @@ public class MovieEndPoint implements MovieApp {
 
 
 ////test
+
+
     @GetMapping("/{id}")
     public ResponseEntity<?> getMovieById(@PathVariable int id){
         int userId = userDetailService.getLoggedInUser().getId();

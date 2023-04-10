@@ -3,7 +3,7 @@ name: Compile-Check
 on:
   push:
     branches:
-      - 'master'
+      - master
 
 jobs:
   build:

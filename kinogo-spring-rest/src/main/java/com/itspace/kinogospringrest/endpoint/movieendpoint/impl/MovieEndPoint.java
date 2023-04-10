@@ -34,12 +34,16 @@ public class MovieEndPoint implements MovieApp {
 
     private final UserDetailServiceImpl userDetailService;
 
+
+
     @GetMapping
     public List<MovieResponseDto> getAllMovies(){
         int userId = userDetailService.getLoggedInUser().getId();
         log.info("Try to get all movies by user with id: {}",userId);
         return movieMapper.mapToResponseList(movieService.findAll());
     }
+
+
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getMovieById(@PathVariable int id){
